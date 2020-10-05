@@ -1,17 +1,11 @@
-import storageModel from './components/storage-model';
+import ManagementCenter from './classes/management';
 
-storageModel('content');
-
+const $content = document.querySelector('.content');
 const $panel = document.querySelector('.panel');
+const management = new ManagementCenter($content, $panel);
 
-const renderForm = () => {
-    const form = `
-        <form>
-            <input type="text" placeholder="this text" name="text">
-        </form>
-    `
+management.initContent();
+management.initPanel();
+management.renderStartForm();
 
-    $panel.insertAdjacentHTML('beforeEnd', form);
-}
-
-renderForm();
+export { management };

@@ -1,0 +1,16 @@
+.app {
+    display: flex;
+}
+
+.panel {
+    width: 20%;
+    height: 100vh;
+    background-color: grey;
+    border-right: 1px black solid;
+}
+
+.content {
+    width: 70%;
+}
+
+/*# sourceMappingURL=/style.493e6e98.css.map */
