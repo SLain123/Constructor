@@ -1,8 +1,10 @@
+import { management } from '../index';
+
 const createSelect = (optsArr, className = 'select') => {
     const select = document.createElement('select');
     select.classList.add(className);
 
-    select.addEventListener('change', (e) => changeSelect(e));
+    select.addEventListener('change', (e) => onChangeSelect(e));
 
     optsArr.forEach(elem => {
         const opt = `<option>${elem}</option>`;
@@ -12,12 +14,9 @@ const createSelect = (optsArr, className = 'select') => {
     return select;
 };
 
-// Ивент для изменения основного селектора в панели, удаляет форму от старого блока и запускает создание новой формы для выбранного блока;
-
-const changeSelect = (e) => {
+const onChangeSelect = (e) => {
     const select = e.target;
-    // createForm(select.options[select.selectedIndex].value);
-    console.log(select);
+    management.changeForm(select.options[select.selectedIndex].value);
 };
 
 export {

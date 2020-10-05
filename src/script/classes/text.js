@@ -7,11 +7,11 @@ class TextBlock extends Block {
         tag = 'p',
         styles = ''
     }) {
-        super('text', content, tag, styles)
+        super(content, tag, styles)
     }
 
     toHTML() {
-        return utils.row(utils.col(`<${this.tag} class="text" style="${utils.getCss(this.styles)}">${this.content}</${this.tag}>`));
+        return utils.row(utils.col(`<${this.tag} class="text" style="${this.styles}">${this.content}</${this.tag}>`));
     }
 }
 

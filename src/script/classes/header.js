@@ -7,11 +7,11 @@ class HeaderBlock extends Block {
         tag = 'h1',
         styles = ''
     }) {
-        super('header', content, tag, styles)
+        super(content, tag, styles)
     }
 
     toHTML() {
-        return utils.row(utils.col(`<${this.tag} class="title" style="${utils.getCss(this.styles)}">${this.content}</${this.tag}>`));
+        return utils.row(utils.col(`<${this.tag} class="title" style="${this.styles}">${this.content}</${this.tag}>`));
     }
 }
 

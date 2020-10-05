@@ -1,5 +1,6 @@
 import Block from './block';
 import utils from '../components/utils';
+import pic from '../../assets/example.jpg';
 
 class ImageBlock extends Block {
     constructor({ 
@@ -7,11 +8,11 @@ class ImageBlock extends Block {
         tag = 'img',
         styles = ''
     }) {
-        super('text', content, tag, styles)
+        super(content, tag, styles)
     }
 
     toHTML() {
-        return utils.row(`<img src="${this.content}" alt="pic" style="${utils.getCss(this.styles)}">`);
+        return utils.row(`<img src="${pic}" alt="pic" style="${this.styles}">`);
     }
 }
 

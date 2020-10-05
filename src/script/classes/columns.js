@@ -3,15 +3,15 @@ import utils from '../components/utils';
 
 class ColumnsBlock extends Block {
     constructor({ 
-        content = 'Здесь должен быть какой то массив с текстом для колонок', 
+        content = ['Текст первой колонки', 'Текст второй колонки', 'Текуст третьей колонки'], 
         tag = 'span',
         styles = ''
     }) {
-        super('text', content, tag, styles)
+        super(content, tag, styles)
     }
 
     toHTML() {
-        const resultArr = this.content.map(text => utils.col(`<${this.tag} class="columns" style="${utils.getCss(this.styles)}">${text}</${this.tag}>`, 3)).join(' ');
+        const resultArr = this.content.map(text => utils.col(`<${this.tag} class="columns" style="${this.styles}">${text}</${this.tag}>`, 3)).join(' ');
     return utils.row(`${resultArr}`);
     }
 }

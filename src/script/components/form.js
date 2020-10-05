@@ -10,15 +10,15 @@ const createForm = tagName => {
                             ${utils.select('tag', ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])}       
                             ${utils.textarea('styles', 'Введите желаемые стили для заголовка')}
                             ${utils.submitBtn()}`);
-    } else if (tagName === 'Абзац с текстом') {
+    } else if (tagName === 'Обычный текст') {
         form = utils.form(` ${utils.input('content', 'Введите текст абзаца')}                          
                             ${utils.textarea('styles', 'Введите желаемые стили для заголовка')}
                             ${utils.submitBtn()}`);
-    } else if (tagName === 'Столбцы с текстом') {
+    } else if (tagName === 'Колонки с текстом') {
         form = utils.form(` ${utils.textarea('content', 'Введите текст абзацев для каждого столбца через ;')}                          
                             ${utils.textarea('styles', 'Введите желаемые стили для заголовка')}
                             ${utils.submitBtn()}`);
-    } else if (tagName === 'Картинка') {
+    } else if (tagName === 'Изображение') {
         form = utils.form(` ${utils.input('content', 'Путь до картинки')}                          
                             ${utils.textarea('styles', 'Введите желаемые стили для картинки')}
                             ${utils.submitBtn()}`);
@@ -28,7 +28,7 @@ const createForm = tagName => {
 
 // Ивент отправки данных из формы, передает данные функции которая создает верную структуру данных;
 
-const onSubmitForm = (e) => {
+const onSubmitForm = e => {
     e.preventDefault();
 
     const $mainSelect = document.querySelector('.main-select');
@@ -37,9 +37,10 @@ const onSubmitForm = (e) => {
     let mainData = {};
 
     for (let elem of formChildren) {
-        mainData[elem.name] = elem.value;
+        if(elem.value) {
+            mainData[elem.name] = elem.value;
+        }
     }
-    
     management.addNewData(dataClass, mainData);
 }
 

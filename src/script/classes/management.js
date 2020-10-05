@@ -19,6 +19,9 @@ import {
     removeContent,
     removeForm
 } from '../components/cleaner';
+import {
+    eventOnRemoveBtns
+} from '../components/remove-btn';
 
 class ManagementCenter {
     constructor(content, panel) {
@@ -30,6 +33,7 @@ class ManagementCenter {
 
     initContent() {
         renderContent(this.dataContent, this.contentBlock);
+        eventOnRemoveBtns();
     }
 
     initPanel() {
@@ -37,13 +41,18 @@ class ManagementCenter {
     }
 
     renderStartForm() {
-        renderPanel(createForm('Заголовок'), this.panelBlock)
+        renderPanel(createForm('Заголовок'), this.panelBlock);
     }
 
     addNewData = (selectorName, data) => {
         addDataToStorage(handler(selectorName, data));
         removeContent(this.contentBlock);
         this.initContent();
+    }
+
+    changeForm = formName => {
+        removeForm();
+        renderPanel(createForm(formName), this.panelBlock)
     }
 }
 

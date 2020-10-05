@@ -1,3 +1,5 @@
+import utils from '../components/utils';
+
 const renderContent = (blocks, parentElement) => {
     blocks.forEach(block => {
         parentElement.insertAdjacentHTML('beforeend', block.toHTML());

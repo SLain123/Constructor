@@ -1,7 +1,7 @@
 import {onSubmitForm} from '../components/form';
 
 const row = content => {
-    return `<div class="row">${content}</div>`
+    return `<div class="row">${content}${removeBtn()}</div>`
 }
 
 const col = (content, num) => {
@@ -38,19 +38,19 @@ const select = (name, options) => {
     return `<select name="${name}">${opts}</select>`;
 }
 
-const getCss = styles => {
-    return styles ? Object.keys(styles).map(p => `${p}: ${styles[p]}`).join('; ') : '';
+const removeBtn = () => {
+    return `<button class="delete-btn">Удалить этот блок</button>`
 }
 
 const utils = {
     row,
     col,
-    getCss,
     form,
     input,
     textarea,
     submitBtn,
-    select
+    select,
+    removeBtn
 }
 
 export default utils;

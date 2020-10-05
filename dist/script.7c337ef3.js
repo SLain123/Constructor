@@ -143,11 +143,11 @@ var createForm = function createForm(tagName) {
 
   if (tagName === 'Заголовок') {
     form = _utils.default.form(" ".concat(_utils.default.input('content', 'Введите текст заголовка'), "\n                            ").concat(_utils.default.select('tag', ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']), "       \n                            ").concat(_utils.default.textarea('styles', 'Введите желаемые стили для заголовка'), "\n                            ").concat(_utils.default.submitBtn()));
-  } else if (tagName === 'Абзац с текстом') {
+  } else if (tagName === 'Обычный текст') {
     form = _utils.default.form(" ".concat(_utils.default.input('content', 'Введите текст абзаца'), "                          \n                            ").concat(_utils.default.textarea('styles', 'Введите желаемые стили для заголовка'), "\n                            ").concat(_utils.default.submitBtn()));
-  } else if (tagName === 'Столбцы с текстом') {
+  } else if (tagName === 'Колонки с текстом') {
     form = _utils.default.form(" ".concat(_utils.default.textarea('content', 'Введите текст абзацев для каждого столбца через ;'), "                          \n                            ").concat(_utils.default.textarea('styles', 'Введите желаемые стили для заголовка'), "\n                            ").concat(_utils.default.submitBtn()));
-  } else if (tagName === 'Картинка') {
+  } else if (tagName === 'Изображение') {
     form = _utils.default.form(" ".concat(_utils.default.input('content', 'Путь до картинки'), "                          \n                            ").concat(_utils.default.textarea('styles', 'Введите желаемые стили для картинки'), "\n                            ").concat(_utils.default.submitBtn()));
   }
 
@@ -170,7 +170,10 @@ var onSubmitForm = function onSubmitForm(e) {
   try {
     for (_iterator.s(); !(_step = _iterator.n()).done;) {
       var elem = _step.value;
-      mainData[elem.name] = elem.value;
+
+      if (elem.value) {
+        mainData[elem.name] = elem.value;
+      }
     }
   } catch (err) {
     _iterator.e(err);
@@ -193,7 +196,7 @@ exports.default = void 0;
 var _form = require("../components/form");
 
 var row = function row(content) {
-  return "<div class=\"row\">".concat(content, "</div>");
+  return "<div class=\"row\">".concat(content).concat(removeBtn(), "</div>");
 };
 
 var col = function col(content, num) {
@@ -233,21 +236,19 @@ var select = function select(name, options) {
   return "<select name=\"".concat(name, "\">").concat(opts, "</select>");
 };
 
-var getCss = function getCss(styles) {
-  return styles ? Object.keys(styles).map(function (p) {
-    return "".concat(p, ": ").concat(styles[p]);
-  }).join('; ') : '';
+var removeBtn = function removeBtn() {
+  return "<button class=\"delete-btn\">\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u044D\u0442\u043E\u0442 \u0431\u043B\u043E\u043A</button>";
 };
 
 var utils = {
   row: row,
   col: col,
-  getCss: getCss,
   form: form,
   input: input,
   textarea: textarea,
   submitBtn: submitBtn,
-  select: select
+  select: select,
+  removeBtn: removeBtn
 };
 var _default = utils;
 exports.default = _default;
@@ -270,10 +271,9 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 var Block = /*#__PURE__*/function () {
-  function Block(type, content, tag, styles) {
+  function Block(content, tag, styles) {
     _classCallCheck(this, Block);
 
-    this.type = type;
     this.content = content;
     this.tag = tag;
     this.styles = styles;
@@ -342,13 +342,13 @@ var HeaderBlock = /*#__PURE__*/function (_Block) {
 
     _classCallCheck(this, HeaderBlock);
 
-    return _super.call(this, 'header', content, tag, styles);
+    return _super.call(this, content, tag, styles);
   }
 
   _createClass(HeaderBlock, [{
     key: "toHTML",
     value: function toHTML() {
-      return _utils.default.row(_utils.default.col("<".concat(this.tag, " class=\"title\" style=\"").concat(_utils.default.getCss(this.styles), "\">").concat(this.content, "</").concat(this.tag, ">")));
+      return _utils.default.row(_utils.default.col("<".concat(this.tag, " class=\"title\" style=\"").concat(this.styles, "\">").concat(this.content, "</").concat(this.tag, ">")));
     }
   }]);
 
@@ -408,13 +408,13 @@ var TextBlock = /*#__PURE__*/function (_Block) {
 
     _classCallCheck(this, TextBlock);
 
-    return _super.call(this, 'text', content, tag, styles);
+    return _super.call(this, content, tag, styles);
   }
 
   _createClass(TextBlock, [{
     key: "toHTML",
     value: function toHTML() {
-      return _utils.default.row(_utils.default.col("<".concat(this.tag, " class=\"text\" style=\"").concat(_utils.default.getCss(this.styles), "\">").concat(this.content, "</").concat(this.tag, ">")));
+      return _utils.default.row(_utils.default.col("<".concat(this.tag, " class=\"text\" style=\"").concat(this.styles, "\">").concat(this.content, "</").concat(this.tag, ">")));
     }
   }]);
 
@@ -466,7 +466,7 @@ var ColumnsBlock = /*#__PURE__*/function (_Block) {
 
   function ColumnsBlock(_ref) {
     var _ref$content = _ref.content,
-        content = _ref$content === void 0 ? 'Здесь должен быть какой то массив с текстом для колонок' : _ref$content,
+        content = _ref$content === void 0 ? ['Текст первой колонки', 'Текст второй колонки', 'Текуст третьей колонки'] : _ref$content,
         _ref$tag = _ref.tag,
         tag = _ref$tag === void 0 ? 'span' : _ref$tag,
         _ref$styles = _ref.styles,
@@ -474,7 +474,7 @@ var ColumnsBlock = /*#__PURE__*/function (_Block) {
 
     _classCallCheck(this, ColumnsBlock);
 
-    return _super.call(this, 'text', content, tag, styles);
+    return _super.call(this, content, tag, styles);
   }
 
   _createClass(ColumnsBlock, [{
@@ -483,7 +483,7 @@ var ColumnsBlock = /*#__PURE__*/function (_Block) {
       var _this = this;
 
       var resultArr = this.content.map(function (text) {
-        return _utils.default.col("<".concat(_this.tag, " class=\"columns\" style=\"").concat(_utils.default.getCss(_this.styles), "\">").concat(text, "</").concat(_this.tag, ">"), 3);
+        return _utils.default.col("<".concat(_this.tag, " class=\"columns\" style=\"").concat(_this.styles, "\">").concat(text, "</").concat(_this.tag, ">"), 3);
       }).join(' ');
       return _utils.default.row("".concat(resultArr));
     }
@@ -494,7 +494,9 @@ var ColumnsBlock = /*#__PURE__*/function (_Block) {
 
 var _default = ColumnsBlock;
 exports.default = _default;
-},{"./block":"script/classes/block.js","../components/utils":"script/components/utils.js"}],"script/classes/image.js":[function(require,module,exports) {
+},{"./block":"script/classes/block.js","../components/utils":"script/components/utils.js"}],"assets/example.jpg":[function(require,module,exports) {
+module.exports = "/example.d5aaa309.jpg";
+},{}],"script/classes/image.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -505,6 +507,8 @@ exports.default = void 0;
 var _block = _interopRequireDefault(require("./block"));
 
 var _utils = _interopRequireDefault(require("../components/utils"));
+
+var _example = _interopRequireDefault(require("../../assets/example.jpg"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -545,13 +549,13 @@ var ImageBlock = /*#__PURE__*/function (_Block) {
 
     _classCallCheck(this, ImageBlock);
 
-    return _super.call(this, 'text', content, tag, styles);
+    return _super.call(this, content, tag, styles);
   }
 
   _createClass(ImageBlock, [{
     key: "toHTML",
     value: function toHTML() {
-      return _utils.default.row("<img src=\"".concat(this.content, "\" alt=\"pic\" style=\"").concat(_utils.default.getCss(this.styles), "\">"));
+      return _utils.default.row("<img src=\"".concat(_example.default, "\" alt=\"pic\" style=\"").concat(this.styles, "\">"));
     }
   }]);
 
@@ -560,9 +564,7 @@ var ImageBlock = /*#__PURE__*/function (_Block) {
 
 var _default = ImageBlock;
 exports.default = _default;
-},{"./block":"script/classes/block.js","../components/utils":"script/components/utils.js"}],"assets/example.jpg":[function(require,module,exports) {
-module.exports = "/example.d5aaa309.jpg";
-},{}],"script/components/storage.js":[function(require,module,exports) {
+},{"./block":"script/classes/block.js","../components/utils":"script/components/utils.js","../../assets/example.jpg":"assets/example.jpg"}],"script/components/storage.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -578,35 +580,26 @@ var _columns = _interopRequireDefault(require("../classes/columns"));
 
 var _image = _interopRequireDefault(require("../classes/image"));
 
-var _example = _interopRequireDefault(require("../../assets/example.jpg"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _dataStorage = [new _header.default({
   content: 'Hot headerrrrr',
   tag: 'h2',
-  styles: {
-    'text-align': 'center',
-    'color': 'red'
-  }
+  styles: 'text-align: center; color: red;'
 }), new _text.default({
-  type: 'text',
   content: 'this\'s super text',
-  styles: {
-    'background': 'yellow'
-  }
+  styles: 'background: yellow;'
 }), new _columns.default({
-  type: 'columns',
   content: [123, 345, 567, 888]
 }), new _image.default({
-  type: 'image',
-  content: _example.default
+  content: '/examplePath/...'
 })];
 var _dataPanel = ['Заголовок', 'Обычный текст', 'Колонки с текстом', 'Изображение'];
 
 var addDataToStorage = function addDataToStorage(data) {
   var storage = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _dataStorage;
   storage.push(data);
+  console.log(_dataStorage);
 };
 
 exports.addDataToStorage = addDataToStorage;
@@ -616,13 +609,17 @@ var getData = function getData(request) {
 };
 
 exports.getData = getData;
-},{"../classes/header":"script/classes/header.js","../classes/text":"script/classes/text.js","../classes/columns":"script/classes/columns.js","../classes/image":"script/classes/image.js","../../assets/example.jpg":"assets/example.jpg"}],"script/components/render.js":[function(require,module,exports) {
+},{"../classes/header":"script/classes/header.js","../classes/text":"script/classes/text.js","../classes/columns":"script/classes/columns.js","../classes/image":"script/classes/image.js"}],"script/components/render.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.renderForm = exports.renderPanel = exports.renderContent = void 0;
+
+var _utils = _interopRequireDefault(require("../components/utils"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var renderContent = function renderContent(blocks, parentElement) {
   blocks.forEach(function (block) {
@@ -643,7 +640,7 @@ var renderForm = function renderForm(block, parentElement) {
 };
 
 exports.renderForm = renderForm;
-},{}],"script/components/select.js":[function(require,module,exports) {
+},{"../components/utils":"script/components/utils.js"}],"script/components/select.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -651,29 +648,30 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createSelect = void 0;
 
+var _index = require("../index");
+
 var createSelect = function createSelect(optsArr) {
   var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'select';
   var select = document.createElement('select');
   select.classList.add(className);
   select.addEventListener('change', function (e) {
-    return changeSelect(e);
+    return onChangeSelect(e);
   });
   optsArr.forEach(function (elem) {
     var opt = "<option>".concat(elem, "</option>");
     select.insertAdjacentHTML('beforeend', opt);
   });
   return select;
-}; // Ивент для изменения основного селектора в панели, удаляет форму от старого блока и запускает создание новой формы для выбранного блока;
-
+};
 
 exports.createSelect = createSelect;
 
-var changeSelect = function changeSelect(e) {
-  var select = e.target; // createForm(select.options[select.selectedIndex].value);
+var onChangeSelect = function onChangeSelect(e) {
+  var select = e.target;
 
-  console.log(select);
+  _index.management.changeForm(select.options[select.selectedIndex].value);
 };
-},{}],"script/components/handler.js":[function(require,module,exports) {
+},{"../index":"script/index.js"}],"script/components/handler.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -689,19 +687,38 @@ var _columns = _interopRequireDefault(require("../classes/columns"));
 
 var _image = _interopRequireDefault(require("../classes/image"));
 
-var _example = _interopRequireDefault(require("../../assets/example.jpg"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var handler = function handler(selectName, data) {
   switch (selectName) {
     case 'Заголовок':
       return new _header.default(data);
+
+    case 'Обычный текст':
+      return new _text.default(data);
+
+    case 'Колонки с текстом':
+      return new _columns.default(convertTextToColumnArr(data));
+
+    case 'Изображение':
+      return new _image.default(data);
   }
 };
 
 exports.handler = handler;
-},{"../classes/header":"script/classes/header.js","../classes/text":"script/classes/text.js","../classes/columns":"script/classes/columns.js","../classes/image":"script/classes/image.js","../../assets/example.jpg":"assets/example.jpg"}],"script/components/cleaner.js":[function(require,module,exports) {
+
+var convertTextToColumnArr = function convertTextToColumnArr(data) {
+  var result = data;
+
+  if (data.content) {
+    var columns = data.content.split('; ');
+    result.content = columns;
+    return result;
+  } else {
+    return data;
+  }
+};
+},{"../classes/header":"script/classes/header.js","../classes/text":"script/classes/text.js","../classes/columns":"script/classes/columns.js","../classes/image":"script/classes/image.js"}],"script/components/cleaner.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -724,7 +741,33 @@ var removeForm = function removeForm() {
 };
 
 exports.removeForm = removeForm;
-},{}],"script/classes/management.js":[function(require,module,exports) {
+},{}],"script/components/remove-btn.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.eventOnRemoveBtns = void 0;
+
+var _utils = _interopRequireDefault(require("./utils"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var eventOnRemoveBtns = function eventOnRemoveBtns() {
+  var btns = document.querySelectorAll('.delete-btn');
+  btns.forEach(function (btn) {
+    return btn.addEventListener('click', function (e) {
+      return _onClickByRemoveBtn(e);
+    });
+  });
+};
+
+exports.eventOnRemoveBtns = eventOnRemoveBtns;
+
+var _onClickByRemoveBtn = function _onClickByRemoveBtn(e) {
+  console.log(e.target);
+};
+},{"./utils":"script/components/utils.js"}],"script/classes/management.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -743,6 +786,8 @@ var _select = require("../components/select");
 var _handler = require("../components/handler");
 
 var _cleaner = require("../components/cleaner");
+
+var _removeBtn = require("../components/remove-btn");
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -765,6 +810,11 @@ var ManagementCenter = /*#__PURE__*/function () {
       _this.initContent();
     });
 
+    _defineProperty(this, "changeForm", function (formName) {
+      (0, _cleaner.removeForm)();
+      (0, _render.renderPanel)((0, _form.createForm)(formName), _this.panelBlock);
+    });
+
     this.contentBlock = content;
     this.panelBlock = panel;
     this.dataContent = (0, _storage.getData)('content');
@@ -775,6 +825,7 @@ var ManagementCenter = /*#__PURE__*/function () {
     key: "initContent",
     value: function initContent() {
       (0, _render.renderContent)(this.dataContent, this.contentBlock);
+      (0, _removeBtn.eventOnRemoveBtns)();
     }
   }, {
     key: "initPanel",
@@ -793,7 +844,7 @@ var ManagementCenter = /*#__PURE__*/function () {
 
 var _default = ManagementCenter;
 exports.default = _default;
-},{"../components/storage":"script/components/storage.js","../components/render":"script/components/render.js","../components/form":"script/components/form.js","../components/select":"script/components/select.js","../components/handler":"script/components/handler.js","../components/cleaner":"script/components/cleaner.js"}],"script/index.js":[function(require,module,exports) {
+},{"../components/storage":"script/components/storage.js","../components/render":"script/components/render.js","../components/form":"script/components/form.js","../components/select":"script/components/select.js","../components/handler":"script/components/handler.js","../components/cleaner":"script/components/cleaner.js","../components/remove-btn":"script/components/remove-btn.js"}],"script/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
