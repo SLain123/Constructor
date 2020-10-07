@@ -18,7 +18,7 @@ const handler = (selectName, data) => {
 
 const convertTextToColumnArr = data => {
     let result = data;
-    if(data.content) {
+    if (data.content) {
         const columns = data.content.split('; ');
         result.content = columns;
         return result;

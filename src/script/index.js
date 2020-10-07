@@ -8,4 +8,6 @@ management.initContent();
 management.initPanel();
 management.renderStartForm();
 
-export { management };
+export {
+    management
+};

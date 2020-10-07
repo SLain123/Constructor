@@ -1,4 +1,6 @@
-import { management } from '../index';
+import {
+    management
+} from '../index';
 
 const createSelect = (optsArr, className = 'select') => {
     const select = document.createElement('select');

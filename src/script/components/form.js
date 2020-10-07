@@ -1,7 +1,7 @@
 import utils from './utils';
-import { management } from '../index';
-
-// Создает форму с различным наполнением в зависимости от переданного имени, передает на рендер;
+import {
+    management
+} from '../index';
 
 const createForm = tagName => {
     let form;
@@ -26,8 +26,6 @@ const createForm = tagName => {
     return form;
 }
 
-// Ивент отправки данных из формы, передает данные функции которая создает верную структуру данных;
-
 const onSubmitForm = e => {
     e.preventDefault();
 
@@ -37,7 +35,7 @@ const onSubmitForm = e => {
     let mainData = {};
 
     for (let elem of formChildren) {
-        if(elem.value) {
+        if (elem.value) {
             mainData[elem.name] = elem.value;
         }
     }

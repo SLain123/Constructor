@@ -1,6 +1,7 @@
 import {
     getData,
-    addDataToStorage
+    addDataToStorage,
+    removeDataStorage
 } from "../components/storage";
 import {
     renderContent,
@@ -31,6 +32,10 @@ class ManagementCenter {
         this.dataPanel = getData('panel');
     }
 
+    updateData() {
+        this.dataContent = getData('content');
+    }
+
     initContent() {
         renderContent(this.dataContent, this.contentBlock);
         eventOnRemoveBtns();
@@ -47,6 +52,14 @@ class ManagementCenter {
     addNewData = (selectorName, data) => {
         addDataToStorage(handler(selectorName, data));
         removeContent(this.contentBlock);
+        this.updateData();
+        this.initContent();
+    }
+
+    removeOldData = id => {
+        removeDataStorage(id);
+        removeContent(this.contentBlock);
+        this.updateData();
         this.initContent();
     }
 

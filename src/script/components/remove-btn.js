@@ -1,4 +1,6 @@
-import utils from './utils';
+import {
+    management
+} from '../index';
 
 const eventOnRemoveBtns = () => {
     const btns = document.querySelectorAll('.delete-btn');
@@ -6,7 +8,14 @@ const eventOnRemoveBtns = () => {
 }
 
 const _onClickByRemoveBtn = e => {
-    console.log(e.target);
+    const mainConteiner = e.target.parentElement;
+    if (mainConteiner.classList.contains('row')) {
+        management.removeOldData(+mainConteiner.id);
+    } else {
+        throw new Error('Неверный родительский объект для удаления');
+    }
 }
 
-export {eventOnRemoveBtns};
+export {
+    eventOnRemoveBtns
+};

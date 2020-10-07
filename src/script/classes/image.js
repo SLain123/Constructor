@@ -3,16 +3,17 @@ import utils from '../components/utils';
 import pic from '../../assets/example.jpg';
 
 class ImageBlock extends Block {
-    constructor({ 
-        content = 'Здесь должен быть путь до картинки', 
+    constructor({
+        id = 'error-id',
+        content = 'Здесь должен быть путь до картинки',
         tag = 'img',
         styles = ''
     }) {
-        super(content, tag, styles)
+        super(id, content, tag, styles)
     }
 
     toHTML() {
-        return utils.row(`<img src="${pic}" alt="pic" style="${this.styles}">`);
+        return utils.row(`<img src="${pic}" alt="pic" style="${this.styles}">`, this.id);
     }
 }
 

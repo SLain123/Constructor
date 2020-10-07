@@ -1,5 +1,3 @@
-import utils from '../components/utils';
-
 const renderContent = (blocks, parentElement) => {
     blocks.forEach(block => {
         parentElement.insertAdjacentHTML('beforeend', block.toHTML());
@@ -14,5 +12,8 @@ const renderForm = (block, parentElement) => {
     parentElement.insertAdjacentHTML('beforeend', block);
 }
 
-export {renderContent, renderPanel, renderForm};
-
+export {
+    renderContent,
+    renderPanel,
+    renderForm
+};

@@ -1,11 +1,13 @@
-import {onSubmitForm} from '../components/form';
+import {
+    onSubmitForm
+} from '../components/form';
 
-const row = content => {
-    return `<div class="row">${content}${removeBtn()}</div>`
+const row = (content, id) => {
+    return `<div class="row" id="${id}">${content}${removeBtn()}</div>`
 }
 
 const col = (content, num) => {
-    if(!num) {
+    if (!num) {
         return `<div class="col">${content}</div>`
     } else {
         return `<div class="col-${num}">${content}</div>`

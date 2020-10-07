@@ -1,7 +1,8 @@
 import utils from '../components/utils';
 
 class Block {
-    constructor(content, tag, styles) {
+    constructor(id, content, tag, styles) {
+        this.id = id;
         this.content = content;
         this.tag = tag;
         this.styles = styles;
