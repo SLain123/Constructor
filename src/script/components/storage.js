@@ -32,12 +32,19 @@ const addDataToStorage = (data, storage = _dataStorage) => {
 };
 
 const removeDataStorage = id => {
-    _dataStorage.forEach((obj, i) => {
-        if (obj.id === id) {
-            const copyArr = [..._dataStorage.slice(0, i), ..._dataStorage.slice(i + 1)];
-            _dataStorage = copyArr;
-        }
-    })
+    const numID = +id;
+
+    if(!isNaN(numID)) {
+        _dataStorage.forEach((obj, i) => {
+            
+            if (obj.id === numID) {
+                const copyArr = [..._dataStorage.slice(0, i), ..._dataStorage.slice(i + 1)];
+                _dataStorage = copyArr;
+            }
+        })
+    } else {
+        throw new Error ('ID блока имеет формат отличный от номера, удалить можно только блок с корреектным id');
+    }
 }
 
 const getData = request => {

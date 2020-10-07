@@ -3,16 +3,17 @@ import TextBlock from '../classes/text';
 import ColumnsBlock from '../classes/columns';
 import ImageBlock from '../classes/image';
 
-const handler = (selectName, data) => {
+const handler = (selectName, data, id) => {
+    const dataWithId = Object.assign(data, id);
     switch (selectName) {
         case 'Заголовок':
-            return new HeaderBlock(data);
+            return new HeaderBlock(dataWithId);
         case 'Обычный текст':
-            return new TextBlock(data);
+            return new TextBlock(dataWithId);
         case 'Колонки с текстом':
-            return new ColumnsBlock(convertTextToColumnArr(data));
+            return new ColumnsBlock(convertTextToColumnArr(dataWithId));
         case 'Изображение':
-            return new ImageBlock(data);
+            return new ImageBlock(dataWithId);
     }
 }
 

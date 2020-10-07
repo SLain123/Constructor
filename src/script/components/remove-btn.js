@@ -10,7 +10,7 @@ const eventOnRemoveBtns = () => {
 const _onClickByRemoveBtn = e => {
     const mainConteiner = e.target.parentElement;
     if (mainConteiner.classList.contains('row')) {
-        management.removeOldData(+mainConteiner.id);
+        management.removeOldData(mainConteiner.id);
     } else {
         throw new Error('Неверный родительский объект для удаления');
     }

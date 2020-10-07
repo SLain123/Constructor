@@ -25,15 +25,22 @@ import {
 } from '../components/remove-btn';
 
 class ManagementCenter {
-    constructor(content, panel) {
+    constructor(content, panel, startId) {
         this.contentBlock = content;
         this.panelBlock = panel;
         this.dataContent = getData('content');
         this.dataPanel = getData('panel');
+        this._id = {
+            id: startId
+        };
     }
 
     updateData() {
         this.dataContent = getData('content');
+    }
+
+    updateId() {
+        this._id.id += 1;
     }
 
     initContent() {
@@ -50,7 +57,8 @@ class ManagementCenter {
     }
 
     addNewData = (selectorName, data) => {
-        addDataToStorage(handler(selectorName, data));
+        addDataToStorage(handler(selectorName, data, this._id));
+        this.updateId();
         removeContent(this.contentBlock);
         this.updateData();
         this.initContent();
