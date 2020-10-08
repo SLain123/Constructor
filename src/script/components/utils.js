@@ -2,8 +2,8 @@ import {
     onSubmitForm
 } from '../components/form';
 
-const row = (content, id) => {
-    return `<div class="row" id="${id}">${content}${removeBtn()}</div>`
+const row = (content, id, position = 'start') => {
+    return `<div class="row" id="${id}" style="display: flex; justify-content: ${position}";>${content}${removeBtn()}</div>`
 }
 
 const col = (content, num) => {
