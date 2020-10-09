@@ -32,7 +32,7 @@ const textarea = (name, placeholder) => {
 }
 
 const submitBtn = () => {
-    return `<button type="submit">Создать</button>`;
+    return `<button type="submit">Создать блок</button>`;
 }
 
 const select = (name, options) => {
@@ -41,7 +41,7 @@ const select = (name, options) => {
 }
 
 const removeBtn = () => {
-    return `<button class="delete-btn">Удалить этот блок</button>`
+    return `<button class="delete-btn">&#215;</button>`
 }
 
 const utils = {

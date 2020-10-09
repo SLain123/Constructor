@@ -1,15 +1,87 @@
 .app {
     display: flex;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .panel {
     width: 20%;
     height: 100vh;
-    background-color: grey;
-    border-right: 1px black solid;
+    background-color: rgba(141, 139, 139, 0.3);
+    border-right: 2px gray solid;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 20px 5px;
 }
 
 .content {
-    width: 70%;
-    font-family: ;
+    width: 78%;
+    margin: 10px 1%;
+}
+
+.delete-btn {
+    position: absolute;
+    left: 96%;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    font-weight: 700;
+    border: none;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.row {
+    position: relative;
+}
+
+.text{
+    min-height: 30px;
+}
+
+.coluns {
+    min-height: 30px;
+}
+
+.main-select {
+    width: 90%;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: none;
+}
+
+.form {
+    display: flex;
+    flex-flow: column;
+    width: 90%;
+}
+
+.form input {
+    margin: 15px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+.form select {
+    margin: 15px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+.form textarea {
+    margin: 15px 0;
+    min-height: 130px;
+    border-radius: 5px;
+    border: none;
+}
+
+.form button {
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    letter-spacing: 1.5px;
 }
