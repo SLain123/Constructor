@@ -23,11 +23,11 @@ const form = content => {
     return form;
 }
 
-const input = (name, placeholder) => {
-    return `<input type="text" placeholder="${placeholder}" name="${name}">`;
+const input = (name, placeholder, lable) => {
+    return `<div class="flex-column"><lable>${lable}<input type="text" placeholder="${placeholder}" name="${name}"></lable></div>`;
 }
 
-const textarea = (name, placeholder) => {
+const textarea = (name, placeholder, lable) => {
     return `<textarea placeholder="${placeholder}" name=${name}></textarea>`;
 }
 
@@ -35,9 +35,9 @@ const submitBtn = () => {
     return `<button type="submit">Создать блок</button>`;
 }
 
-const select = (name, options) => {
+const select = (name, options, lable) => {
     const opts = options.map(text => `<option>${text}</option>`);
-    return `<select name="${name}">${opts}</select>`;
+    return `<div class="flex-column"><lable>${lable}<select name="${name}">${opts}</select></lable></div>`;
 }
 
 const removeBtn = () => {
