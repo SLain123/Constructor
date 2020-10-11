@@ -8,7 +8,13 @@ const removeForm = () => {
     form.remove();
 }
 
+const removeControl = () => {
+    const controlBlock = document.querySelector('.control-block');
+    controlBlock.remove();
+}
+
 export {
     removeContent,
-    removeForm
+    removeForm,
+    removeControl
 };

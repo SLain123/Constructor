@@ -28,15 +28,23 @@ const input = (name, placeholder, lable) => {
 }
 
 const textarea = (name, placeholder, lable) => {
-    return `<textarea placeholder="${placeholder}" name=${name}></textarea>`;
+    return `<div class="flex-column"><lable>${lable}<textarea placeholder="${placeholder}" name=${name}></textarea></lable></div>`;
 }
 
 const submitBtn = () => {
     return `<button type="submit">Создать блок</button>`;
 }
 
+const justBtn = (text = 'Кнопка') => {
+    const btn = document.createElement('button');
+    btn.innerText = text;
+
+    return btn;
+}
+
 const select = (name, options, lable) => {
     const opts = options.map(text => `<option>${text}</option>`);
+
     return `<div class="flex-column"><lable>${lable}<select name="${name}">${opts}</select></lable></div>`;
 }
 
@@ -52,7 +60,8 @@ const utils = {
     textarea,
     submitBtn,
     select,
-    removeBtn
+    removeBtn,
+    justBtn
 }
 
 export default utils;

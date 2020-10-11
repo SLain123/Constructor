@@ -18,11 +18,15 @@ import {
 } from '../components/handler';
 import {
     removeContent,
-    removeForm
+    removeForm,
+    removeControl
 } from '../components/cleaner';
 import {
     eventOnRemoveBtns
 } from '../components/remove-btn';
+import {
+    createControlBlock
+} from '../components/control-btns'
 
 class ManagementCenter {
     constructor(content, panel, startId) {
@@ -54,6 +58,7 @@ class ManagementCenter {
 
     renderStartForm() {
         renderPanel(createForm('Заголовок'), this.panelBlock);
+        renderPanel(createControlBlock(), this.panelBlock);
     }
 
     addNewData = (selectorName, data) => {
@@ -73,7 +78,9 @@ class ManagementCenter {
 
     changeForm = formName => {
         removeForm();
-        renderPanel(createForm(formName), this.panelBlock)
+        removeControl();
+        renderPanel(createForm(formName), this.panelBlock);
+        renderPanel(createControlBlock(), this.panelBlock);
     }
 }
 

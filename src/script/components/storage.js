@@ -2,26 +2,43 @@ import HeaderBlock from '../classes/header';
 import TextBlock from '../classes/text';
 import ColumnsBlock from '../classes/columns';
 import ImageBlock from '../classes/image';
+import help from './help';
 
 let _dataStorage = [
     new HeaderBlock({
         id: 1,
-        content: 'Hot headerrrrr',
+        content: help.headerStartContent,
         tag: 'h2',
-        styles: 'text-align: center; color: red;'
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontFamily: 'Verdana, Geneva, sans-serif',
+        styles: 'margin: 25px; text-shadow: 1px 1px 25px black;'
     }),
     new TextBlock({
         id: 2,
-        content: 'this\'s super text',
-        styles: 'background: yellow;'
+        content: help.textStartContent,
+        fontFamily: 'Verdana, Geneva, sans-serif',
+        styles: 'background: #B2B2B2; padding: 30px; border-radius: 10px; box-shadow: 1px 1px 5px black;'
+    }),
+    new TextBlock({
+        id: 3,
+        content: help.descriptionText,
+        fontFamily: 'Verdana, Geneva, sans-serif',
+        styles: 'background: #FFFF66; padding: 30px; border-radius: 10px; box-shadow: 1px 1px 5px black;'
     }),
     new ColumnsBlock({
-        id: 3,
-        content: [123, 345, 567, 888]
+        id: 4,
+        coluns: 6,
+        content: ['Это', 'пример', 'блока', 'из', 'шести', 'столбцов'],
     }),
     new ImageBlock({
-        id: 4,
-        content: '/examplePath/...'
+        id: 5,
+        content: '/examplePath/...',
+        width: 800,
+        height: 460,
+        radius: 45,
+        justify: 'center',
+        styles: 'margin-top: 10px'
     })
 ];
 
