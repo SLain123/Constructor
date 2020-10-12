@@ -27,7 +27,7 @@ const createForm = tagName => {
                             ${utils.submitBtn()}`);
     } else if (tagName === 'Колонки с текстом') {
                             form = utils.form(` ${utils.textarea('content', 'Введите текст абзацев для каждого столбца через ; ', 'Текст колонок:')}
-                            ${utils.select('coluns', ['2', '3', '4', '6', '12'], 'Выберите количество столбцов текста')}
+                            ${utils.select('coluns', ['3', '2', '4', '6', '12'], 'Выберите количество столбцов текста')}
                             ${utils.input('fontSize', 'Введите размер текста от 1 до 100px (только цифры)', 'Размер текста:')}
                             ${utils.input('color', 'Введите цвет текста', 'Цвет текста:')}
                             ${utils.select('fontFamily', ['sans-serif', 'serif', 'Georgia', 'system-ui'], 'Выберите тип шрифта')}

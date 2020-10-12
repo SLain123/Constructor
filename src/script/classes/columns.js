@@ -5,7 +5,7 @@ class ColumnsBlock extends Block {
     constructor({
         id = 'error-id',
         content = ['Текст первой колонки', 'Текст второй колонки', 'Текст третьей колонки'],
-        coluns = '3',
+        coluns = 3,
         tag = 'span',
         fontSize = '16',
         color = 'black',
