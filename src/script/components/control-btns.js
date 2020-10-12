@@ -1,4 +1,7 @@
 import utils from './utils';
+import {
+    management
+} from '../index';
 
 const createControlBlock = () => {
     const controlBlock = document.createElement('div');
@@ -6,12 +9,11 @@ const createControlBlock = () => {
 
     controlBlock.classList.add('control-block');
     cleanBtn.classList.add('clean-btn');
-    cleanBtn.addEventListener('click', () => console.log('clean all'));
+    cleanBtn.addEventListener('click', () => management.cleanAllData());
     controlBlock.append(cleanBtn);
 
     return controlBlock;
 }
-
 
 export {
     createControlBlock

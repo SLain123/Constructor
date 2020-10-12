@@ -64,6 +64,10 @@ const removeDataStorage = id => {
     }
 }
 
+const cleanAll = () => {
+    _dataStorage = [];
+}
+
 const getData = request => {
     return (request === 'content') ? _dataStorage : _dataPanel;
 }
@@ -71,5 +75,6 @@ const getData = request => {
 export {
     getData,
     addDataToStorage,
-    removeDataStorage
+    removeDataStorage,
+    cleanAll
 };

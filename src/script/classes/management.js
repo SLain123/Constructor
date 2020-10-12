@@ -1,7 +1,8 @@
 import {
     getData,
     addDataToStorage,
-    removeDataStorage
+    removeDataStorage,
+    cleanAll
 } from "../components/storage";
 import {
     renderContent,
@@ -73,6 +74,13 @@ class ManagementCenter {
         removeDataStorage(id);
         removeContent(this.contentBlock);
         this.updateData();
+        this.initContent();
+    }
+
+    cleanAllData = () => {
+        cleanAll();
+        this.updateData();
+        removeContent(this.contentBlock);
         this.initContent();
     }
 
