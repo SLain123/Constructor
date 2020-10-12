@@ -14,7 +14,7 @@ const createControlBlock = () => {
     cleanBtn.addEventListener('click', () => management.cleanAllData());
 
     resultBtn.classList.add('result-btn');
-    resultBtn.addEventListener('click', () => console.log('result here'))
+    resultBtn.addEventListener('click', () => management.displayResults());
 
     controlBlock.append(cleanBtn);
     controlBlock.append(resultBtn);

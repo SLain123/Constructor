@@ -152,3 +152,71 @@
 .result-btn:hover {
     background: green;
 }
+
+.overlay {
+    background: rgba(141, 139, 139, 0.9);
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    animation: h_overlay 1s ease;
+}
+
+.overlay_hide {
+    display: none;
+}
+
+.overlay_visible {
+    display: block;
+    animation: v_overlay 1.5s ease;
+}
+
+.results {
+    width: 80%;
+    background: white;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 1px 1px 15px black;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.results__body {
+    padding: 50px 25px;
+}
+
+.results__close-btn {
+    position: absolute;
+    padding: 0;
+    line-height: 0;
+    top: 11%;
+    right: 1%;
+    border: none;
+    background: transparent;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+@keyframes v_overlay {
+    from {
+        display: none;
+        opacity: 0;
+    }
+    5% {
+        display: block;
+        opacity: .1;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes h_overlay {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

@@ -27,7 +27,13 @@ import {
 } from '../components/remove-btn';
 import {
     createControlBlock
-} from '../components/control-btns'
+} from '../components/control-btns';
+import {
+    results
+} from '../components/results';
+import {
+    displayModalResults
+} from '../components/modal';
 
 class ManagementCenter {
     constructor(content, panel, startId) {
@@ -89,6 +95,11 @@ class ManagementCenter {
         removeControl();
         renderPanel(createForm(formName), this.panelBlock);
         renderPanel(createControlBlock(), this.panelBlock);
+    }
+
+    displayResults = () => {
+        displayModalResults();
+        results(this.contentBlock);
     }
 }
 
