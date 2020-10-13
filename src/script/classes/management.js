@@ -36,11 +36,12 @@ import {
 } from '../components/modal';
 
 class ManagementCenter {
-    constructor(content, panel, startId) {
+    constructor(content, panel, startId, results) {
         this.contentBlock = content;
         this.panelBlock = panel;
         this.dataContent = getData('content');
         this.dataPanel = getData('panel');
+        this.results = results;
         this._id = {
             id: startId
         };
@@ -99,7 +100,7 @@ class ManagementCenter {
 
     displayResults = () => {
         displayModalResults();
-        results(this.contentBlock);
+        results(this.contentBlock, this.results);
     }
 }
 

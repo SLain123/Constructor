@@ -171,7 +171,7 @@
 }
 
 .results {
-    width: 80%;
+    width: 90%;
     background: white;
     position: relative;
     border-radius: 5px;
@@ -190,8 +190,8 @@
     position: absolute;
     padding: 0;
     line-height: 0;
-    top: 11%;
-    right: 1%;
+    top: 15px;
+    right: 10px;
     border: none;
     background: transparent;
     font-size: 30px;

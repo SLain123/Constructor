@@ -2,16 +2,17 @@ import {
     onSubmitForm
 } from '../components/form';
 
-const row = (content, id, position = 'start') => {
-    return `<div class="row" id="${id}" style="display: flex; justify-content: ${position}";>${content}${removeBtn()}</div>`
+const row = (content, id) => {
+    return `<div class="row" id="${id}">${content}${removeBtn()}</div>`
 }
 
-const col = (content, num) => {
-    if (!num) {
-        return `<div class="col">${content}</div>`
+const col = (content, position) => {
+    if(position) {
+        return `<div class="col" style="display: flex; justify-content: ${position}";>${content}</div>`;
     } else {
-        return `<div class="col-${num}">${content}</div>`
+        return `<div class="col">${content}</div>`;
     }
+    
 }
 
 const form = content => {

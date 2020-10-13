@@ -28,7 +28,6 @@ let _dataStorage = [
     }),
     new ColumnsBlock({
         id: 4,
-        coluns: 6,
         content: ['Это', 'пример', 'блока', 'из', 'шести', 'столбцов'],
     }),
     new ImageBlock({
