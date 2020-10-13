@@ -3,11 +3,11 @@ import {
 } from '../index';
 
 const createSelect = (optsArr, className = 'select') => {
-    const lable = document.createElement('lable');
+    const label = document.createElement('label');
     const select = document.createElement('select');
 
-    lable.innerHTML = 'Выберите тип блока:'
-    lable.classList.add(className);
+    label.innerHTML = 'Выберите тип блока:'
+    label.classList.add(className);
 
     select.addEventListener('change', (e) => onChangeSelect(e));
 
@@ -16,9 +16,9 @@ const createSelect = (optsArr, className = 'select') => {
         select.insertAdjacentHTML('beforeend', opt);
     })
 
-    lable.append(select);
+    label.append(select);
 
-    return lable;
+    return label;
 };
 
 const onChangeSelect = (e) => {

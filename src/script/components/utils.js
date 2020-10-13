@@ -24,12 +24,12 @@ const form = content => {
     return form;
 }
 
-const input = (name, placeholder, lable) => {
-    return `<div class="flex-column"><lable>${lable}<input type="text" placeholder="${placeholder}" name="${name}"></lable></div>`;
+const input = (name, placeholder, label) => {
+    return `<div class="flex-column"><label>${label}<input type="text" placeholder="${placeholder}" name="${name}"></label></div>`;
 }
 
-const textarea = (name, placeholder, lable) => {
-    return `<div class="flex-column"><lable>${lable}<textarea placeholder="${placeholder}" name=${name}></textarea></lable></div>`;
+const textarea = (name, placeholder, label) => {
+    return `<div class="flex-column"><label>${label}<textarea placeholder="${placeholder}" name=${name}></textarea></label></div>`;
 }
 
 const submitBtn = () => {
@@ -43,10 +43,10 @@ const justBtn = (text = 'Кнопка') => {
     return btn;
 }
 
-const select = (name, options, lable) => {
+const select = (name, options, label) => {
     const opts = options.map(text => `<option>${text}</option>`);
 
-    return `<div class="flex-column"><lable>${lable}<select name="${name}">${opts}</select></lable></div>`;
+    return `<div class="flex-column"><label>${label}<select name="${name}">${opts}</select></label></div>`;
 }
 
 const removeBtn = () => {
