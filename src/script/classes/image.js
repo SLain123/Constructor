@@ -23,7 +23,7 @@ class ImageBlock extends Block {
     }
 
     toHTML() {
-        return utils.row(utils.col(`<img src="${pic}" alt="${this.alt}" class="pic" data-path="${this.content}" style="width: ${this.width}px; height: ${this.height}px; border-radius: ${this.radius}px; ${this.styles}">`, this.justify), this.id);
+        return utils.row(utils.col(`<img src="${pic}" alt="${this.alt}" class="pic-${this.id}" data-path="${this.content}" style="width: ${this.width}px; height: ${this.height}px; border-radius: ${this.radius}px; ${this.styles}">`, this.justify), this.id);
     }
 }
 

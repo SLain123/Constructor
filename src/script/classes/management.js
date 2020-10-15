@@ -29,19 +29,22 @@ import {
     createControlBlock
 } from '../components/control-btns';
 import {
-    results
+    getStandartStyles,
+    results,
+    resetResults
 } from '../components/results';
 import {
     displayModalResults
 } from '../components/modal';
 
 class ManagementCenter {
-    constructor(content, panel, startId, results) {
+    constructor(content, panel, startId, resultsHTML, resultsCSS) {
         this.contentBlock = content;
         this.panelBlock = panel;
         this.dataContent = getData('content');
         this.dataPanel = getData('panel');
-        this.results = results;
+        this.resultsHTML = resultsHTML;
+        this.resultsCSS = resultsCSS;
         this._id = {
             id: startId
         };
@@ -99,8 +102,10 @@ class ManagementCenter {
     }
 
     displayResults = () => {
+        resetResults(this.resultsHTML, this.resultsCSS)
         displayModalResults();
-        results(this.contentBlock, this.results);
+        getStandartStyles(this.resultsCSS);
+        results(this.contentBlock, this.resultsHTML, this.resultsCSS);
     }
 }
 

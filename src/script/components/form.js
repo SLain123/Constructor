@@ -40,7 +40,7 @@ const createForm = tagName => {
                             ${utils.input('width', 'Введите ширину картинки', 'Ширина:')}
                             ${utils.input('height', 'Введите высоту картинки', 'Длина:')}
                             ${utils.input('radius', 'Введите значение для скругления углов картинки (только цифры)', 'Величина скругления углов:')}
-                            ${utils.select('justify', ['flex-start', 'center', 'flex-end'], 'Выберите положение картинки')}                            
+                            ${utils.select('justify', ['left', 'center', 'right'], 'Выберите положение картинки')}                            
                             ${utils.textarea('styles', 'Введите желаемые стили для картинки', 'Дополнительные стили:')}
                             ${utils.submitBtn()}`);
     }
@@ -52,12 +52,13 @@ const onSubmitForm = e => {
 
     const $mainSelect = document.querySelector('.main-select select');
     const dataClass = $mainSelect.options[$mainSelect.selectedIndex].value;
-    const formLables = e.target.querySelectorAll('lable');
+    const formLables = e.target.querySelectorAll('label');
 
     let mainData = {};
 
     for (let lable of formLables) {
         const dataBlock = lable.children[0];
+
         if (dataBlock.value) {
             mainData[dataBlock.name] = dataBlock.value;
         }

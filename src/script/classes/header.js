@@ -23,7 +23,7 @@ class HeaderBlock extends Block {
 
     toHTML() {
         return utils.row(
-            utils.col(`<${this.tag} class="title" style="color: ${this.color}; font-family: ${this.fontFamily};font-style: ${this.fontStyle}; font-weight: ${this.fontWeight}; text-align: ${this.textAlign}; ${this.styles}">${this.content}</${this.tag}>`),
+            utils.col(`<${this.tag} class="title-${this.id}" style="color: ${this.color}; font-family: ${this.fontFamily};font-style: ${this.fontStyle}; font-weight: ${this.fontWeight}; text-align: ${this.textAlign}; ${this.styles}">${this.content}</${this.tag}>`),
             this.id);
     }
 }

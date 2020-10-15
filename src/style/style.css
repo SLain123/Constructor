@@ -203,6 +203,20 @@
     min-height: 30px;
 }
 
+.left {
+    display: flex;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.right {
+    display: flex;
+    justify-content: flex-end;
+}
+
 /* Стили результирующего модального окна */
 
 .overlay {

@@ -8,7 +8,7 @@ const row = (content, id) => {
 
 const col = (content, position) => {
     if(position) {
-        return `<div class="col" style="display: flex; justify-content: ${position}";>${content}</div>`;
+        return `<div class="col ${position}">${content}</div>`;
     } else {
         return `<div class="col">${content}</div>`;
     }

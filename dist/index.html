@@ -10,8 +10,20 @@
 <body>
     <div class="app">
         <div class="panel"></div>
-        <div class="content">
-            
+        <div class="content"></div>
+        <div class="overlay overlay_hide">
+            <div class="results">
+                <div class="results__control">
+                    <button class="results__btn-control results__btn-active" id="html" aria-label="Получить HTML код" type="button">HTML</button>
+                    <button class="results__btn-control" id="css" aria-label="Получить CSS код" type="button">CSS</button>
+                    <button class="results__btn-control" id="copy" aria-label="Копировать все" type="button">Copy All</button>
+                </div>
+                <div class="results__body">
+                    <div class="results__html"></div>
+                    <div class="results__css"></div>
+                </div>
+                <button class="results__close-btn">&#215;</button>
+            </div>
         </div>
     </div>
     <script src="/script.7c337ef3.js"></script>
