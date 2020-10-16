@@ -104,7 +104,6 @@ class ManagementCenter {
     displayResults = () => {
         resetResults(this.resultsHTML, this.resultsCSS)
         displayModalResults();
-        getStandartStyles(this.resultsCSS);
         results(this.contentBlock, this.resultsHTML, this.resultsCSS);
     }
 }

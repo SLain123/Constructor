@@ -1,6 +1,9 @@
 const results = (contentBlock, targetHTMLBlock, targetCSSBlock) => {
     const allBlocks = Array.from(contentBlock.children);
-    let result = [];
+    let resultHTML = [];
+    let resultCSS = [];
+
+    getStandartStyles(resultCSS);
 
     for (let block of allBlocks) {
         const allChildBlocks = Array.from(block.children);
@@ -10,17 +13,18 @@ const results = (contentBlock, targetHTMLBlock, targetCSSBlock) => {
             for (let elem of allChildBlocks) { // перебор всех НЕ столбцов
 
                 if (!elem.classList.contains('delete-btn')) { // проверка на контент, кроме кнопки удалить
-                    getStyles(elem.children[0], targetCSSBlock);
-                    result.push(handlerHTMLBlocks(elem));
+                    getStyles(elem.children[0], resultCSS);
+                    resultHTML.push(handlerHTMLBlocks(elem));
                 }
             }
         } else {
-            getStyles(allChildBlocks[0].children[0], targetCSSBlock);
-            result.push(handlerHTMLColumns(allChildBlocks));
+            getStyles(allChildBlocks[0].children[0], resultCSS);
+            resultHTML.push(handlerHTMLColumns(allChildBlocks));
         }
     }
 
-    targetHTMLBlock.innerText = result.join('\n');
+    targetHTMLBlock.innerText = resultHTML.join('\n');
+    targetCSSBlock.innerText = resultCSS.join('\n');
 }
 
 const handlerHTMLBlocks = elem => {
@@ -48,7 +52,7 @@ const handlerHTMLColumns = elemsArr => {
     return `<div class="row">${group}\n</div>`;
 }
 
-const getStandartStyles = targetCSSBlock => {
+const getStandartStyles = resultCSS => {
     const classStatus = {
         row: false,
         col: false,
@@ -58,11 +62,11 @@ const getStandartStyles = targetCSSBlock => {
     }
 
     const classGuts = {
-        row : '.row: {\n\u00A0\u00A0\u00A0\u00A0--bs-gutter-x: 1.5rem;\n\u00A0\u00A0\u00A0\u00A0--bs-gutter-y: 0;\n\u00A0\u00A0\u00A0\u00A0display: flex;\n\u00A0\u00A0\u00A0\u00A0flex-wrap: wrap;\n\u00A0\u00A0\u00A0\u00A0margin-top: calc(var(--bs-gutter-y) * -1);\n\u00A0\u00A0\u00A0\u00A0margin-right: calc(var(--bs-gutter-x)/ -2);\n\u00A0\u00A0\u00A0\u00A0margin-left: calc(var(--bs-gutter-x)/ -2); \n\u00A0\u00A0\u00A0\u00A0position: relative; \n}\n\n',
-        col: '.col: {\n\u00A0\u00A0\u00A0\u00A0flex: 1 0 0%;\n\u00A0\u00A0\u00A0\u00A0width: 100%;\n\u00A0\u00A0\u00A0\u00A0max-width: 100%;\n\u00A0\u00A0\u00A0\u00A0padding-right: calc(var(--bs-gutter-x)/ 2);\n\u00A0\u00A0\u00A0\u00A0padding-left: calc(var(--bs-gutter-x)/ 2);\n\u00A0\u00A0\u00A0\u00A0margin-top: var(--bs-gutter-y); \n}\n\n',
-        left: '.left: {\n\u00A0\u00A0\u00A0\u00A0display: flex; \n} \n\n',
-        center: '.center: {\n\u00A0\u00A0\u00A0\u00A0display: flex;\n\u00A0\u00A0\u00A0\u00A0justify-content: center; \n}\n\n',
-        right: '.right: {\n\u00A0\u00A0\u00A0\u00A0display: flex;\n\u00A0\u00A0\u00A0\u00A0justify-content: flex-end; \n}\n\n'
+        row : '.row: {\n\u00A0\u00A0\u00A0\u00A0--bs-gutter-x: 1.5rem;\n\u00A0\u00A0\u00A0\u00A0--bs-gutter-y: 0;\n\u00A0\u00A0\u00A0\u00A0display: flex;\n\u00A0\u00A0\u00A0\u00A0flex-wrap: wrap; \n\u00A0\u00A0\u00A0\u00A0margin-top: calc(var(--bs-gutter-y) * -1);\n\u00A0\u00A0\u00A0\u00A0margin-right: calc(var(--bs-gutter-x)/ -2);\n\u00A0\u00A0\u00A0\u00A0margin-left: calc(var(--bs-gutter-x)/ -2);\n\u00A0\u00A0\u00A0\u00A0position: relative;\n }\n',
+        col: '.col: {\n\u00A0\u00A0\u00A0\u00A0flex: 1 0 0%;\n\u00A0\u00A0\u00A0\u00A0width: 100%;\n\u00A0\u00A0\u00A0\u00A0max-width: 100%;\n\u00A0\u00A0\u00A0\u00A0padding-right: calc(var(--bs-gutter-x)/ 2);\n\u00A0\u00A0\u00A0\u00A0padding-left: calc(var(--bs-gutter-x)/ 2);\n\u00A0\u00A0\u00A0\u00A0margin-top: var(--bs-gutter-y); \n}\n',
+        left: '.left: {\n\u00A0\u00A0\u00A0\u00A0display: flex; \n}\n',
+        center: '.center: {\n\u00A0\u00A0\u00A0\u00A0 display: flex;\n\u00A0\u00A0\u00A0\u00A0 justify-content: center; \n}\n',
+        right: '.right: {\n\u00A0\u00A0\u00A0\u00A0 display: flex; \n\u00A0\u00A0\u00A0\u00A0 justify-content: flex-end; \n}\n'
     }
 
     const checkClass = className => {
@@ -78,26 +82,26 @@ const getStandartStyles = targetCSSBlock => {
         if(classStatus[name]) {
             switch(name) {
                 case 'row':
-                    targetCSSBlock.innerText += classGuts.row;
+                    resultCSS.push(classGuts.row);
                     break;
                 case 'col':
-                    targetCSSBlock.innerText += classGuts.col;
+                    resultCSS.push(classGuts.col);
                     break;
                 case 'left':
-                    targetCSSBlock.innerText += classGuts.left;
+                    resultCSS.push(classGuts.left);
                     break;
                 case 'center':
-                    targetCSSBlock.innerText += classGuts.center;
+                    resultCSS.push(classGuts.center);
                     break;
                 case 'right':
-                    targetCSSBlock.innerText += classGuts.right;
+                    resultCSS.push(classGuts.right);
                     break;
             }
         }
     }
 }
 
-const getStyles = (elem, targetCSSBlock) => {
+const getStyles = (elem, resultCSS) => {
     const space = '\u00A0\u00A0\u00A0\u00A0';
     const allStyles = elem.style;
     const classElem = elem.classList.value;
@@ -112,9 +116,9 @@ const getStyles = (elem, targetCSSBlock) => {
         }
     }
 
-    result += `} \n \n`
+    result += `}\n`
 
-    targetCSSBlock.innerText += result;
+    resultCSS.push(result);
 }
 
 const resetResults = (targetHTMLBlock, targetCSSBlock) => {
@@ -124,6 +128,5 @@ const resetResults = (targetHTMLBlock, targetCSSBlock) => {
 
 export {
     results,
-    getStandartStyles,
     resetResults
 };

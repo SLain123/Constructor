@@ -293,6 +293,7 @@
     padding: 15px 30px;
     max-height: 90vh;
     overflow-y: scroll;
+    min-height: 90vh;
 }
 
 .results__close-btn {
@@ -312,6 +313,14 @@
     outline: none;
     text-shadow: 4px 4px 8px black, -4px 4px 8px black, 4px -4px 8px black, -4px -4px 8px black;
     color: white;
+}
+
+.results__block {
+    display: none;
+}
+
+.results_active-block {
+    display: flex;
 }
 
 @keyframes v_overlay {
