@@ -50,7 +50,41 @@ $modalOverlay.addEventListener('mousedown', e => {
 $closeModalBtn.addEventListener('click', () => closeModal());
 $htmlBtn.addEventListener('click', () => makeActive('html'));
 $cssBtn.addEventListener('click', () => makeActive('css'));
-$copyBtn.addEventListener('click', () => console.log('copy'));
+$copyBtn.addEventListener('click', () => {
+    let copyText;
+
+    if($htmlBlock.classList.contains('results_active-block')) {
+        copyText = $htmlBlock.innerText;
+    } else {
+        copyText = $cssBlock.innerText;
+    }
+    
+    if(copyText !== '') {
+        navigator.clipboard.writeText(copyText)
+            .then(() => {
+                $copyBtn.innerText = 'Код в буфере';
+                $copyBtn.classList.add('results__btn-copy-success');
+            })
+            .catch(() => {
+                $copyBtn.innerText = 'Ошибка!';
+                $copyBtn.classList.add('results__btn-copy-fail');
+            })
+            .finally(() => {
+                setTimeout(() => {
+                    $copyBtn.innerText = 'Копировать код'
+                    $copyBtn.classList.remove('results__btn-copy-success');
+                    $copyBtn.classList.remove('results__btn-copy-fail')},
+                    2000);
+            })
+    } else {
+        $copyBtn.innerText = 'Ничего копировать';
+        $copyBtn.classList.add('results__btn-copy-fail');
+        setTimeout(() => {
+            $copyBtn.innerText = 'Копировать код';
+            $copyBtn.classList.remove('results__btn-copy-fail')}, 
+            2000);
+    }
+});
 
 export {
     displayModalResults

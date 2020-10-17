@@ -24,8 +24,8 @@ const form = content => {
     return form;
 }
 
-const input = (name, placeholder, label) => {
-    return `<div class="flex-column"><label>${label}<input type="text" placeholder="${placeholder}" name="${name}"></label></div>`;
+const input = (name, placeholder, label, type = 'text') => {
+    return `<div class="flex-column"><label>${label}<input type="${type}" placeholder="${placeholder}" name="${name}"></label></div>`;
 }
 
 const textarea = (name, placeholder, label) => {

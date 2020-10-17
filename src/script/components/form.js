@@ -17,7 +17,7 @@ const createForm = tagName => {
                             ${utils.submitBtn()}`);
     } else if (tagName === 'Обычный текст') {
         form = utils.form(` ${utils.input('content', 'Введите текст абзаца', 'Текст абзаца:')}
-                            ${utils.input('fontSize', 'Введите размер текста от 1 до 100px (только цифры)', 'Размер текста:')}
+                            ${utils.input('fontSize', 'Введите размер текста от 1 до 100px (только цифры)', 'Размер текста:', 'number')}
                             ${utils.input('color', 'Введите цвет текста', 'Цвет текста:')}
                             ${utils.select('fontFamily', ['sans-serif', 'serif', 'Georgia', 'system-ui'], 'Выберите тип шрифта')}
                             ${utils.select('fontStyle', ['normal', 'italic'], 'Выберите стиль шрифта')}
@@ -27,7 +27,7 @@ const createForm = tagName => {
                             ${utils.submitBtn()}`);
     } else if (tagName === 'Колонки с текстом') {
                             form = utils.form(` ${utils.textarea('content', 'Введите текст абзацев для каждого столбца через ; ', 'Текст колонок:')}
-                            ${utils.input('fontSize', 'Введите размер текста от 1 до 100px (только цифры)', 'Размер текста:')}
+                            ${utils.input('fontSize', 'Введите размер текста от 1 до 100px (только цифры)', 'Размер текста:', 'number')}
                             ${utils.input('color', 'Введите цвет текста', 'Цвет текста:')}
                             ${utils.select('fontFamily', ['sans-serif', 'serif', 'Georgia', 'system-ui'], 'Выберите тип шрифта')}
                             ${utils.select('fontStyle', ['normal', 'italic'], 'Выберите стиль шрифта')}
@@ -37,9 +37,9 @@ const createForm = tagName => {
     } else if (tagName === 'Изображение') {
         form = utils.form(` ${utils.input('content', 'Путь до картинки', 'Укажите путь до картинки:')}
                             ${utils.input('alt', 'Введите описание для картинки:, (alt)', 'Введите описани картинки:')}
-                            ${utils.input('width', 'Введите ширину картинки', 'Ширина:')}
-                            ${utils.input('height', 'Введите высоту картинки', 'Длина:')}
-                            ${utils.input('radius', 'Введите значение для скругления углов картинки (только цифры)', 'Величина скругления углов:')}
+                            ${utils.input('width', 'Введите ширину картинки', 'Ширина:', 'number')}
+                            ${utils.input('height', 'Введите высоту картинки', 'Длина:', 'number')}
+                            ${utils.input('radius', 'Введите значение для скругления углов картинки (только цифры)', 'Величина скругления углов:', 'number')}
                             ${utils.select('justify', ['left', 'center', 'right'], 'Выберите положение картинки')}                            
                             ${utils.textarea('styles', 'Введите желаемые стили для картинки', 'Дополнительные стили:')}
                             ${utils.submitBtn()}`);
