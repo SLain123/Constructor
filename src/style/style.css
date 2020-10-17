@@ -23,6 +23,50 @@
     flex-flow: column;
     align-items: center;
     padding: 20px 5px;
+    position: relative;
+}
+
+.panel__arrow {
+    position: absolute;
+    left: 100%;
+    top: 40%;
+    width: 15px;
+    height: 200px;
+    background: gray;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+    z-index: 1;
+    color: white;
+    min-height: 130px;
+}
+
+.panel__arrow-text {
+    width: .7em; 
+    width: 1ch; 
+    text-align: center; 
+    font: Consolas, Monaco, monospace; 
+    word-wrap: break-word;
+    padding-left: 2px;
+}
+
+.panel__arrow::before {
+    content: '';
+    position: absolute;
+    border: 7.5px solid transparent; 
+    border-bottom: 7.5px solid gray; 
+    border-left: 7.5px solid gray;
+    top: -15px;
+}
+
+.panel__arrow::after {
+    content: '';
+    position: absolute;
+    border: 7.5px solid transparent; 
+    border-top: 7.5px solid gray; 
+    border-left: 7.5px solid gray;
+    top: 100%;
 }
 
 .main-select {

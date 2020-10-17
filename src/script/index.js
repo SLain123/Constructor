@@ -1,4 +1,5 @@
 import ManagementCenter from './classes/management';
+import arrowControl from './components/arrow-panel';
 
 const $content = document.querySelector('.content');
 const $panel = document.querySelector('.panel');
@@ -9,6 +10,7 @@ const management = new ManagementCenter($content, $panel, 10, $resultsHTML, $res
 management.initContent();
 management.initPanel();
 management.renderStartForm();
+arrowControl();
 
 export {
     management
