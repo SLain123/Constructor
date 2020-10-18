@@ -33,8 +33,8 @@ let _dataStorage = [
     new ImageBlock({
         id: 5,
         content: '/examplePath/...',
-        width: 800,
-        height: 460,
+        width: 700,
+        height: 400,
         radius: 45,
         justify: 'center',
         styles: 'margin-top: 10px'

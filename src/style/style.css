@@ -23,11 +23,13 @@
     transition: 1s ease;
     width: 20%;
     padding: 20px 5px;
+    min-width: 220px;
 }
 
 .panel_hide {
     width: 0;
     padding: 0;
+    min-width: 0;
 }
 
 .panel__arrow {
@@ -82,8 +84,7 @@
 }
 
 .panel__wrapper_hide {
-    visibility: hidden;
-    z-index: -1;
+    display: none;
 }
 
 .main-select {
@@ -223,6 +224,7 @@
 .content {
     width: 78%;
     margin: 10px 15px;
+    transition: 1s ease;
 }
 
 .content_full-size {
@@ -257,6 +259,7 @@
 
 .row {
     position: relative;
+    overflow: hidden;
 }
 
 .text{
@@ -368,7 +371,7 @@
     padding: 15px 30px;
     max-height: 90vh;
     overflow-y: scroll;
-    min-height: 90vh;
+    height: 90vh;
 }
 
 .results__close-btn {
@@ -418,5 +421,29 @@
     }
     to {
         opacity: 0;
+    }
+}
+
+/* Медиа запросы */
+
+@media (max-width: 1024px) {
+    .content {
+        width: auto;
+    }
+
+    .results {
+        width: 95%;
+    }
+
+    .results__body {
+        height: 80vh;
+        max-height: 80vh;
+    }
+
+    .results__control {
+        height: 150px;
+        flex-flow: column;
+        justify-content: space-between;
+        align-items: center
     }
 }
