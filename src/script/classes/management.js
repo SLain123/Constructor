@@ -38,9 +38,10 @@ import {
 } from '../components/modal';
 
 class ManagementCenter {
-    constructor(content, panel, startId, resultsHTML, resultsCSS) {
+    constructor(content, panel, panelWrapper, startId, resultsHTML, resultsCSS) {
         this.contentBlock = content;
         this.panelBlock = panel;
+        this.panelWrapper = panelWrapper;
         this.dataContent = getData('content');
         this.dataPanel = getData('panel');
         this.resultsHTML = resultsHTML;
@@ -64,12 +65,12 @@ class ManagementCenter {
     }
 
     initPanel() {
-        renderPanel(createSelect(this.dataPanel, 'main-select'), this.panelBlock);
+        renderPanel(createSelect(this.dataPanel, 'main-select'), this.panelWrapper);
     }
 
     renderStartForm() {
-        renderPanel(createForm('Заголовок'), this.panelBlock);
-        renderPanel(createControlBlock(), this.panelBlock);
+        renderPanel(createForm('Заголовок'), this.panelWrapper);
+        renderPanel(createControlBlock(), this.panelWrapper);
     }
 
     addNewData = (selectorName, data) => {
@@ -97,14 +98,26 @@ class ManagementCenter {
     changeForm = formName => {
         removeForm();
         removeControl();
-        renderPanel(createForm(formName), this.panelBlock);
-        renderPanel(createControlBlock(), this.panelBlock);
+        renderPanel(createForm(formName), this.panelWrapper);
+        renderPanel(createControlBlock(), this.panelWrapper);
     }
 
     displayResults = () => {
         resetResults(this.resultsHTML, this.resultsCSS)
         displayModalResults();
         results(this.contentBlock, this.resultsHTML, this.resultsCSS);
+    }
+
+    hidePanel = () => {
+        this.panelBlock.classList.add('panel_hide');
+        this.panelWrapper.classList.add('panel__wrapper_hide');
+        this.contentBlock.classList.add('content_full-size');
+    }
+
+    displayPanel = () => {
+        this.panelBlock.classList.remove('panel_hide');
+        this.panelWrapper.classList.remove('panel__wrapper_hide');
+        this.contentBlock.classList.remove('content_full-size');
     }
 }
 
