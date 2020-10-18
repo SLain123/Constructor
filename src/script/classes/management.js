@@ -119,6 +119,25 @@ class ManagementCenter {
         this.panelWrapper.classList.remove('panel__wrapper_hide');
         this.contentBlock.classList.remove('content_full-size');
     }
+
+    saveToLocalStorage = () => {
+        const contentToJSON = JSON.stringify(this.dataContent);
+
+        localStorage.setItem('content', contentToJSON);
+    }
+
+    loadFromLocalStorage = () => {
+        const content = JSON.parse(localStorage.getItem('content'));
+        
+        cleanAll();
+        content.forEach(allDataBlock => {
+            const {name, id} = allDataBlock;
+            addDataToStorage(handler(name, allDataBlock, id, true));
+        });
+        removeContent(this.contentBlock);
+        this.updateData();
+        this.initContent();
+    }
 }
 
 export default ManagementCenter;

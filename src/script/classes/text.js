@@ -15,6 +15,7 @@ class TextBlock extends Block {
         styles = ''
     }) {
         super(id, content, tag, styles);
+        this.name = 'Обычный текст';
         this.color = color;
         this.fontFamily = fontFamily;
         this.fontStyle = fontStyle;

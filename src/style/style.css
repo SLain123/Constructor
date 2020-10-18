@@ -10,6 +10,7 @@
 .app {
     display: flex;
     box-sizing: border-box;
+    overflow-y: hidden;
 }
 
 /* Стили панели управления блоками */
@@ -18,12 +19,11 @@
     min-height: 100vh;
     background-color: rgba(141, 139, 139, 0.3);
     border-right: 2px gray solid;
-    padding: 20px 5px;
+    padding: 5px;
     position: relative;
     transition: 1s ease;
     width: 20%;
-    padding: 20px 5px;
-    min-width: 220px;
+    min-width: 235px;
 }
 
 .panel_hide {
@@ -46,6 +46,13 @@
     z-index: 1;
     color: white;
     min-height: 130px;
+    border: none;
+    padding: 0;
+}
+
+.panel__arrow:focus {
+    outline: none;
+    box-shadow: 3px 3px 7px rgb(61, 60, 60), 0 3px 7px  rgb(61, 60, 60), 3px -3px 7px  rgb(61, 60, 60), 0 -3px 7px  rgb(61, 60, 60);
 }
 
 .panel__arrow-text {
@@ -77,10 +84,10 @@
 }
 
 .panel__wrapper {
+    position: relative;
     display: flex;
     flex-flow: column;
     align-items: center;
-    visibility: visible;
 }
 
 .panel__wrapper_hide {
@@ -167,7 +174,7 @@
 }
 
 .control-block {
-    margin: 30px 0;
+    margin: 25px 0 0 0;
     width: 90%;
 }
 
@@ -176,7 +183,7 @@
     box-shadow: 3px 3px 7px rgb(61, 60, 60), -3px 3px 7px  rgb(61, 60, 60), 3px -3px 7px  rgb(61, 60, 60), -3px -3px 7px  rgb(61, 60, 60);
 }
 
-.control-block * {
+.control-block button {
     width: 100%;
     border: none;
     border-radius: 5px;
@@ -198,25 +205,50 @@
 }
 
 .result-btn {
-    margin-top: 10px;
+    margin: 10px 0 25px 0;
     height: 45px;
     font-size: 18px;
-    background: #339933;
+    background: #6666CC;
 }
 
-.control-block *:active {
+.control-block button:active {
     box-shadow: none;
     position: relative;
     top: 2px;
 } 
 
 .result-btn:hover {
-    background: green;
+    background: #212185;
 }
 
 .flex-column {
     display: flex;
     flex-flow: column, wrap;
+    margin: 0;
+}
+
+.storage-control-block {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.save-btn {
+    background: #339933;
+    flex-basis: 48%;
+}
+
+.save-btn:hover {
+    background: green;
+}
+
+.load-btn {
+    background: #93A300;
+    flex-basis: 48%;
+}
+
+.load-btn:hover {
+    background: #606A00;
 }
 
 /* Стили контент раздела */

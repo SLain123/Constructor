@@ -3,7 +3,7 @@ import TextBlock from '../classes/text';
 import ColumnsBlock from '../classes/columns';
 import ImageBlock from '../classes/image';
 
-const handler = (selectName, data, id) => {
+const handler = (selectName, data, id, isRecreated = false) => {
     const dataWithId = Object.assign(data, id);
     switch (selectName) {
         case 'Заголовок':
@@ -11,7 +11,12 @@ const handler = (selectName, data, id) => {
         case 'Обычный текст':
             return new TextBlock(dataWithId);
         case 'Колонки с текстом':
-            return new ColumnsBlock(convertTextToColumnArr(dataWithId));
+            if(isRecreated) {
+                return new ColumnsBlock(dataWithId);
+            } else {
+                return new ColumnsBlock(convertTextToColumnArr(dataWithId));
+            }
+            
         case 'Изображение':
             return new ImageBlock(dataWithId);
     }

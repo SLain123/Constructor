@@ -5,10 +5,23 @@ import {
 
 const createControlBlock = () => {
     const controlBlock = document.createElement('div');
+    const groupBlock = document.createElement('div');
+    const saveBtn = utils.justBtn('Сохранить');
+    const loadBtn = utils.justBtn('Загрузить');
     const cleanBtn = utils.justBtn('Очистить все');
     const resultBtn = utils.justBtn('Результат');
 
+    groupBlock.classList.add('storage-control-block');
     controlBlock.classList.add('control-block');
+
+    saveBtn.classList.add('save-btn');
+    saveBtn.addEventListener('click', () => management.saveToLocalStorage());
+
+    loadBtn.classList.add('load-btn');
+    loadBtn.addEventListener('click', () => management.loadFromLocalStorage());
+
+    groupBlock.append(loadBtn);
+    groupBlock.append(saveBtn);
 
     cleanBtn.classList.add('clean-btn');
     cleanBtn.addEventListener('click', () => management.cleanAllData());
@@ -16,8 +29,9 @@ const createControlBlock = () => {
     resultBtn.classList.add('result-btn');
     resultBtn.addEventListener('click', () => management.displayResults());
 
-    controlBlock.append(cleanBtn);
+    controlBlock.append(groupBlock);
     controlBlock.append(resultBtn);
+    controlBlock.append(cleanBtn);
 
     return controlBlock;
 }

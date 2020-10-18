@@ -1,35 +1,45 @@
-const arrowControl = (eventHidePanel, eventDisplayPanel) => {
+import {
+    management
+} from '../index';
+
+const arrowControl = () => {
     const $arrowBtn = document.querySelector('.panel__arrow');
     const $arrowText = document.querySelector('.panel__arrow-text');
+    const $panelWrapper = document.querySelector('.panel__wrapper');
+
     let first = true;
 
-    const hidePanel = () => {
-        eventHidePanel();
+    const hidePanelEvent = () => {
+        management.hidePanel();
         $arrowText.innerText = 'показать';
-        
-        $arrowBtn.removeEventListener('click', hidePanel);
-        $arrowBtn.addEventListener('click', displayPanel);
+
+        $arrowBtn.removeEventListener('click', hidePanelEvent);
+        $arrowBtn.addEventListener('click', displayPanelEvent);
     }
 
-    const displayPanel = () => {
-        eventDisplayPanel();
+    const displayPanelEvent = () => {
+        management.displayPanel();
         $arrowText.innerText = 'скрыть';
-        
-        $arrowBtn.removeEventListener('click', displayPanel);
-        $arrowBtn.addEventListener('click', hidePanel);
+
+        $arrowBtn.removeEventListener('click', displayPanelEvent);
+        $arrowBtn.addEventListener('click', hidePanelEvent);
     }
 
     window.addEventListener('scroll', () => {
-        if(first) {
+        if (first) {
             first = false;
             window.scrollTo(0, 0);
         } else {
-            const top = ((document.documentElement.clientHeight / 2) - 100) + window.pageYOffset;
-            $arrowBtn.style.top = `${top}px`;
+            const topArrow = ((document.documentElement.clientHeight / 2) - 100) + window.pageYOffset;
+            $arrowBtn.style.top = `${topArrow}px`;
+            
+            if (document.documentElement.clientHeight > 950) {
+                $panelWrapper.style.top = `${window.pageYOffset}px`;
+            }
         }
     });
 
-    $arrowBtn.addEventListener('click', hidePanel);
+    $arrowBtn.addEventListener('click', hidePanelEvent);
 }
 
 export default arrowControl;

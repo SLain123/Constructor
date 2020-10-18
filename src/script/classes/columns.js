@@ -13,7 +13,8 @@ class ColumnsBlock extends Block {
         fontWeight = 'normal',
         styles = ''
     }) {
-        super(id, content, tag, styles)
+        super(id, content, tag, styles);
+        this.name = 'Колонки с текстом';
         this.color = color;
         this.fontFamily = fontFamily;
         this.fontStyle = fontStyle;

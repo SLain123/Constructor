@@ -14,6 +14,7 @@ class HeaderBlock extends Block {
         styles = ''
     }) {
         super(id, content, tag, styles);
+        this.name = 'Заголовок';
         this.color = color;
         this.fontFamily = fontFamily;
         this.fontStyle = fontStyle;

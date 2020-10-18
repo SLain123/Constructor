@@ -15,6 +15,7 @@ class ImageBlock extends Block {
         styles = ''
     }) {
         super(id, content, tag, styles);
+        this.name = 'Изображение';
         this.alt = alt;
         this.width = width;
         this.height = height;

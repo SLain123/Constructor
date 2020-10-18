@@ -11,7 +11,7 @@ const management = new ManagementCenter($content, $panel, $panelWrapper, 10, $re
 management.initContent();
 management.initPanel();
 management.renderStartForm();
-arrowControl(management.hidePanel, management.displayPanel);
+arrowControl();
 
 export {
     management
