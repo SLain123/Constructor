@@ -124,6 +124,11 @@
     width: 100%;
 }
 
+.form label {
+    margin: 0;
+    overflow-x: hidden;
+}
+
 .form input::placeholder {
     font-size: 13px;
 }

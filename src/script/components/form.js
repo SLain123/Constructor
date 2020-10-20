@@ -26,7 +26,7 @@ const createForm = tagName => {
                             ${utils.textarea('styles', 'Введите желаемые стили для текста (опционально), формат css', 'Дополнительные стили:')}
                             ${utils.submitBtn()}`);
     } else if (tagName === 'Колонки с текстом') {
-                            form = utils.form(` ${utils.textarea('content', 'Введите текст абзацев для каждого столбца через ; ', 'Текст колонок:')}
+        form = utils.form(` ${utils.textarea('content', 'Введите текст абзацев для каждого столбца через ; ', 'Текст колонок:')}
                             ${utils.input('fontSize', 'Введите размер текста от 1 до 100px (только цифры)', 'Размер текста:', 'number')}
                             ${utils.input('color', 'Введите цвет текста', 'Цвет текста:')}
                             ${utils.select('fontFamily', ['sans-serif', 'serif', 'Georgia', 'system-ui'], 'Выберите тип шрифта')}
@@ -35,7 +35,8 @@ const createForm = tagName => {
                             ${utils.textarea('styles', 'Введите желаемые стили для заголовка', 'Дополнительные стили:')}
                             ${utils.submitBtn()}`);
     } else if (tagName === 'Изображение') {
-        form = utils.form(` ${utils.input('content', 'Путь до картинки', 'Укажите путь до картинки:')}
+        form = utils.form(` ${utils.input('content', 'Путь будет добавлен в результатах', 'Путь до картинки:')} 
+                            ${utils.input('file', '', 'Добавьте макет изображения:', 'file')}
                             ${utils.input('alt', 'Введите описание для картинки:, (alt)', 'Введите описани картинки:')}
                             ${utils.input('width', 'Введите ширину картинки', 'Ширина:', 'number')}
                             ${utils.input('height', 'Введите высоту картинки', 'Длина:', 'number')}
@@ -59,8 +60,19 @@ const onSubmitForm = e => {
     for (let lable of formLables) {
         const dataBlock = lable.children[0];
 
-        if (dataBlock.value) {
-            mainData[dataBlock.name] = dataBlock.value;
+        if (dataBlock.value) {                        //Проверка на наличие контента
+
+            if (dataBlock.name === 'file') {          //Проверка на то что элемент является файлом(pic)
+
+                if(dataBlock.files[0].type === 'image/jpeg' || dataBlock.files[0].type === 'image/png' ||dataBlock.files[0].type === 'image/gif') {            //Проверка на формат файла
+                
+                    const url = URL.createObjectURL(dataBlock.files[0])
+                    mainData[dataBlock.name] = url;
+
+                }
+            } else {
+                mainData[dataBlock.name] = dataBlock.value;
+            }
         }
     }
 

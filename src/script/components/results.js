@@ -30,9 +30,15 @@ const results = (contentBlock, targetHTMLBlock, targetCSSBlock) => {
 const handlerHTMLBlocks = elem => {
     const clone = elem.cloneNode(true);
     const space = '\u00A0\u00A0\u00A0\u00A0';
+    const childElement = clone.children[0];
 
-    clone.children[0].removeAttribute('style');
+    if(childElement.tagName === 'IMG') {
+        const path = childElement.getAttribute('data-path');
+        childElement.removeAttribute('data-path');
+        childElement.setAttribute('src', path);
+    }
 
+    childElement.removeAttribute('style');
     return `<div class="row">\n${space}<div class="col">\n${space}${space}${clone.innerHTML}\n${space}</div>\n</div>`;
 }
 

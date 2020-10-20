@@ -25,6 +25,9 @@ const form = content => {
 }
 
 const input = (name, placeholder, label, type = 'text') => {
+    if(type === 'file') {
+        return `<div class="flex-column"><label>${label}<input type="${type}" accept=".png, .jpg, .jpeg" name="${name}"></label></div>`;
+    }
     return `<div class="flex-column"><label>${label}<input type="${type}" placeholder="${placeholder}" name="${name}"></label></div>`;
 }
 
