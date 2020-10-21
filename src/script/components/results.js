@@ -32,7 +32,7 @@ const handlerHTMLBlocks = elem => {
     const space = '\u00A0\u00A0\u00A0\u00A0';
     const childElement = clone.children[0];
 
-    if(childElement.tagName === 'IMG') {
+    if (childElement.tagName === 'IMG') {
         const path = childElement.getAttribute('data-path');
         childElement.removeAttribute('data-path');
         childElement.setAttribute('src', path);
@@ -68,7 +68,7 @@ const getStandartStyles = resultCSS => {
     }
 
     const classGuts = {
-        row : '.row: {\n\u00A0\u00A0\u00A0\u00A0--bs-gutter-x: 1.5rem;\n\u00A0\u00A0\u00A0\u00A0--bs-gutter-y: 0;\n\u00A0\u00A0\u00A0\u00A0display: flex;\n\u00A0\u00A0\u00A0\u00A0flex-wrap: wrap; \n\u00A0\u00A0\u00A0\u00A0margin-top: calc(var(--bs-gutter-y) * -1);\n\u00A0\u00A0\u00A0\u00A0margin-right: calc(var(--bs-gutter-x)/ -2);\n\u00A0\u00A0\u00A0\u00A0margin-left: calc(var(--bs-gutter-x)/ -2);\n\u00A0\u00A0\u00A0\u00A0position: relative;\n }\n',
+        row: '.row: {\n\u00A0\u00A0\u00A0\u00A0--bs-gutter-x: 1.5rem;\n\u00A0\u00A0\u00A0\u00A0--bs-gutter-y: 0;\n\u00A0\u00A0\u00A0\u00A0display: flex;\n\u00A0\u00A0\u00A0\u00A0flex-wrap: wrap; \n\u00A0\u00A0\u00A0\u00A0margin-top: calc(var(--bs-gutter-y) * -1);\n\u00A0\u00A0\u00A0\u00A0margin-right: calc(var(--bs-gutter-x)/ -2);\n\u00A0\u00A0\u00A0\u00A0margin-left: calc(var(--bs-gutter-x)/ -2);\n\u00A0\u00A0\u00A0\u00A0position: relative;\n }\n',
         col: '.col: {\n\u00A0\u00A0\u00A0\u00A0flex: 1 0 0%;\n\u00A0\u00A0\u00A0\u00A0width: 100%;\n\u00A0\u00A0\u00A0\u00A0max-width: 100%;\n\u00A0\u00A0\u00A0\u00A0padding-right: calc(var(--bs-gutter-x)/ 2);\n\u00A0\u00A0\u00A0\u00A0padding-left: calc(var(--bs-gutter-x)/ 2);\n\u00A0\u00A0\u00A0\u00A0margin-top: var(--bs-gutter-y); \n}\n',
         left: '.left: {\n\u00A0\u00A0\u00A0\u00A0display: flex; \n}\n',
         center: '.center: {\n\u00A0\u00A0\u00A0\u00A0 display: flex;\n\u00A0\u00A0\u00A0\u00A0 justify-content: center; \n}\n',
@@ -76,17 +76,17 @@ const getStandartStyles = resultCSS => {
     }
 
     const checkClass = className => {
-        if(document.querySelector(`.${className}`)) {
-            classStatus[className] = true; 
+        if (document.querySelector(`.${className}`)) {
+            classStatus[className] = true;
         }
     }
 
     const allClassesToCheck = ['row', 'col', 'left', 'center', 'right'];
     allClassesToCheck.forEach(name => checkClass(name));
 
-    for(name in classStatus) {
-        if(classStatus[name]) {
-            switch(name) {
+    for (name in classStatus) {
+        if (classStatus[name]) {
+            switch (name) {
                 case 'row':
                     resultCSS.push(classGuts.row);
                     break;

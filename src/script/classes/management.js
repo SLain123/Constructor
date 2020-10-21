@@ -128,10 +128,13 @@ class ManagementCenter {
 
     loadFromLocalStorage = () => {
         const content = JSON.parse(localStorage.getItem('content'));
-        
+
         cleanAll();
         content.forEach(allDataBlock => {
-            const {name, id} = allDataBlock;
+            const {
+                name,
+                id
+            } = allDataBlock;
             addDataToStorage(handler(name, allDataBlock, id, true));
         });
         removeContent(this.contentBlock);

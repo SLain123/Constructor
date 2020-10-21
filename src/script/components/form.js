@@ -25,8 +25,20 @@ const createForm = tagName => {
                             ${utils.select('textAlign', ['left', 'center', 'right'], 'Выберите положение текста')}
                             ${utils.textarea('styles', 'Введите желаемые стили для текста (опционально), формат css', 'Дополнительные стили:')}
                             ${utils.submitBtn()}`);
+    } else if (tagName === 'Гиперссылка') {
+        form = utils.form(` ${utils.input('content', 'Введите текст для отображения', 'Текст ссылки:')}
+                            ${utils.input('link', 'Введите ссылку http(s)://...', 'Тело ссылки:')}
+                            ${utils.select('blank', ['Да', 'Нет'], 'В отдельном окне?')}
+                            ${utils.input('fontSize', 'Введите размер текста от 1 до 100px (только цифры)', 'Размер текста:', 'number')}
+                            ${utils.input('color', 'Введите цвет текста', 'Цвет текста:')}
+                            ${utils.select('fontFamily', ['sans-serif', 'serif', 'Georgia', 'system-ui'], 'Тип шрифта')}
+                            ${utils.select('fontStyle', ['normal', 'italic'], 'Стиль шрифта')}
+                            ${utils.select('fontWeight', ['normal', 'bold', 'lighter'], 'Толщина шрифта')}
+                            ${utils.select('textAlign', ['left', 'center', 'right'], 'Положение ссылки')}
+                            ${utils.textarea('styles', 'Введите желаемые стили для текста (опционально), формат css', 'Дополнительные стили:')}
+                            ${utils.submitBtn()}`);
     } else if (tagName === 'Колонки с текстом') {
-        form = utils.form(` ${utils.textarea('content', 'Введите текст абзацев для каждого столбца через ; ', 'Текст колонок:')}
+        form = utils.form(` ${utils.textarea('content', 'Введите текст абзацев для каждого столбца через ; с пробелом:     `; `', 'Текст колонок:')}
                             ${utils.input('fontSize', 'Введите размер текста от 1 до 100px (только цифры)', 'Размер текста:', 'number')}
                             ${utils.input('color', 'Введите цвет текста', 'Цвет текста:')}
                             ${utils.select('fontFamily', ['sans-serif', 'serif', 'Georgia', 'system-ui'], 'Выберите тип шрифта')}
@@ -60,12 +72,12 @@ const onSubmitForm = e => {
     for (let lable of formLables) {
         const dataBlock = lable.children[0];
 
-        if (dataBlock.value) {                        //Проверка на наличие контента
+        if (dataBlock.value) { //Проверка на наличие контента
 
-            if (dataBlock.name === 'file') {          //Проверка на то что элемент является файлом(pic)
+            if (dataBlock.name === 'file') { //Проверка на то что элемент является файлом(pic)
 
-                if(dataBlock.files[0].type === 'image/jpeg' || dataBlock.files[0].type === 'image/png' ||dataBlock.files[0].type === 'image/gif') {            //Проверка на формат файла
-                
+                if (dataBlock.files[0].type === 'image/jpeg' || dataBlock.files[0].type === 'image/png' || dataBlock.files[0].type === 'image/gif') { //Проверка на формат файла
+
                     const url = URL.createObjectURL(dataBlock.files[0])
                     mainData[dataBlock.name] = url;
 

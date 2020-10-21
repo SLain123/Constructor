@@ -2,6 +2,7 @@ import HeaderBlock from '../classes/header';
 import TextBlock from '../classes/text';
 import ColumnsBlock from '../classes/columns';
 import ImageBlock from '../classes/image';
+import Link from '../classes/link';
 
 const handler = (selectName, data, id, isRecreated = false) => {
     const dataWithId = Object.assign(data, id);
@@ -19,6 +20,8 @@ const handler = (selectName, data, id, isRecreated = false) => {
             
         case 'Изображение':
             return new ImageBlock(dataWithId);
+        case 'Гиперссылка':
+            return new Link(dataWithId);
     }
 }
 

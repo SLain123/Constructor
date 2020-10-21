@@ -2,7 +2,7 @@ import {
     management
 } from '../index';
 
-const arrowControl = () => {
+(function () {
     const $arrowBtn = document.querySelector('.panel__arrow');
     const $arrowText = document.querySelector('.panel__arrow-text');
     const $panelWrapper = document.querySelector('.panel__wrapper');
@@ -32,7 +32,7 @@ const arrowControl = () => {
         } else {
             const topArrow = ((document.documentElement.clientHeight / 2) - 100) + window.pageYOffset;
             $arrowBtn.style.top = `${topArrow}px`;
-            
+
             if (document.documentElement.clientHeight > 950) {
                 $panelWrapper.style.top = `${window.pageYOffset}px`;
             }
@@ -40,6 +40,4 @@ const arrowControl = () => {
     });
 
     $arrowBtn.addEventListener('click', hidePanelEvent);
-}
-
-export default arrowControl;
+})();
