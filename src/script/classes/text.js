@@ -7,7 +7,7 @@ class TextBlock extends Block {
         content = 'Здесь должен быть какой то текст',
         tag = 'p',
         fontSize = '16',
-        color = 'black',
+        color = '#333',
         fontFamily = 'sans-serif',
         fontStyle = 'normal',
         fontWeight = 'normal',

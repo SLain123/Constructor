@@ -13,19 +13,20 @@ let _dataStorage = [
         textAlign: 'center',
         fontWeight: 'bold',
         fontFamily: 'Verdana, Geneva, sans-serif',
-        styles: 'margin: 10px; text-shadow: 3px 3px 15px #323232;'
+        styles: 'margin-bottom: 5px; text-shadow: 3px 3px 15px #333;'
     }),
     new TextBlock({
         id: 2,
         content: help.textStartContent,
         fontFamily: 'Verdana, Geneva, sans-serif',
-        styles: 'background: #9D9D9D; padding: 30px; border-radius: 10px; box-shadow: 3px 3px 7px #323232;'
+        fontSize: '18',
+        styles: 'background: #C7D1D1; padding: 30px; border-radius: 10px;'
     }),
     new ColumnsBlock({
         id: 3,
         content: [help.descriptionText, help.descriptionColuns, help.descriptionImage, help.descriptionLink],
         fontFamily: 'Verdana, Geneva, sans-serif',
-        styles: 'border: grey 1px solid; display: block; border-radius: 10px; background: #FFFF66; box-shadow: 2px 2px 5px #323232; padding: 5px; margin: 5px;'
+        styles: 'border: grey 1px solid; display: block; border-radius: 10px; background: #FFFF66; padding: 5px; margin: 5px;'
     }),
     new ImageBlock({
         id: 4,
@@ -34,7 +35,7 @@ let _dataStorage = [
         height: 350,
         radius: 45,
         justify: 'center',
-        styles: 'margin: 10px; box-shadow: 2px 2px 10px #323232, -2px 2px 10px #323232;'
+        styles: 'margin: 10px; box-shadow: 2px 2px 10px #333;'
     }),
     new Link({
         id: 5,

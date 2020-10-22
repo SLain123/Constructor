@@ -68,11 +68,11 @@ const getStandartStyles = resultCSS => {
     }
 
     const classGuts = {
-        row: '.row: {\n\u00A0\u00A0\u00A0\u00A0--bs-gutter-x: 1.5rem;\n\u00A0\u00A0\u00A0\u00A0--bs-gutter-y: 0;\n\u00A0\u00A0\u00A0\u00A0display: flex;\n\u00A0\u00A0\u00A0\u00A0flex-wrap: wrap; \n\u00A0\u00A0\u00A0\u00A0margin-top: calc(var(--bs-gutter-y) * -1);\n\u00A0\u00A0\u00A0\u00A0margin-right: calc(var(--bs-gutter-x)/ -2);\n\u00A0\u00A0\u00A0\u00A0margin-left: calc(var(--bs-gutter-x)/ -2);\n\u00A0\u00A0\u00A0\u00A0position: relative;\n }\n',
-        col: '.col: {\n\u00A0\u00A0\u00A0\u00A0flex: 1 0 0%;\n\u00A0\u00A0\u00A0\u00A0width: 100%;\n\u00A0\u00A0\u00A0\u00A0max-width: 100%;\n\u00A0\u00A0\u00A0\u00A0padding-right: calc(var(--bs-gutter-x)/ 2);\n\u00A0\u00A0\u00A0\u00A0padding-left: calc(var(--bs-gutter-x)/ 2);\n\u00A0\u00A0\u00A0\u00A0margin-top: var(--bs-gutter-y); \n}\n',
-        left: '.left: {\n\u00A0\u00A0\u00A0\u00A0display: flex; \n}\n',
-        center: '.center: {\n\u00A0\u00A0\u00A0\u00A0 display: flex;\n\u00A0\u00A0\u00A0\u00A0 justify-content: center; \n}\n',
-        right: '.right: {\n\u00A0\u00A0\u00A0\u00A0 display: flex; \n\u00A0\u00A0\u00A0\u00A0 justify-content: flex-end; \n}\n'
+        row: '.row {\n\u00A0\u00A0\u00A0\u00A0--bs-gutter-x: 1.5rem;\n\u00A0\u00A0\u00A0\u00A0--bs-gutter-y: 0;\n\u00A0\u00A0\u00A0\u00A0display: flex;\n\u00A0\u00A0\u00A0\u00A0flex-wrap: wrap; \n\u00A0\u00A0\u00A0\u00A0margin-top: calc(var(--bs-gutter-y) * -1);\n\u00A0\u00A0\u00A0\u00A0margin-right: calc(var(--bs-gutter-x)/ -2);\n\u00A0\u00A0\u00A0\u00A0margin-left: calc(var(--bs-gutter-x)/ -2);\n\u00A0\u00A0\u00A0\u00A0position: relative;\n }\n',
+        col: '.col {\n\u00A0\u00A0\u00A0\u00A0flex: 1 0 0%;\n\u00A0\u00A0\u00A0\u00A0width: 100%;\n\u00A0\u00A0\u00A0\u00A0max-width: 100%;\n\u00A0\u00A0\u00A0\u00A0padding-right: calc(var(--bs-gutter-x)/ 2);\n\u00A0\u00A0\u00A0\u00A0padding-left: calc(var(--bs-gutter-x)/ 2);\n\u00A0\u00A0\u00A0\u00A0margin-top: var(--bs-gutter-y); \n}\n',
+        left: '.left {\n\u00A0\u00A0\u00A0\u00A0display: flex; \n}\n',
+        center: '.center {\n\u00A0\u00A0\u00A0\u00A0 display: flex;\n\u00A0\u00A0\u00A0\u00A0 justify-content: center; \n}\n',
+        right: '.right {\n\u00A0\u00A0\u00A0\u00A0 display: flex; \n\u00A0\u00A0\u00A0\u00A0 justify-content: flex-end; \n}\n'
     }
 
     const checkClass = className => {

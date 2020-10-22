@@ -6,8 +6,8 @@ import {
 const createControlBlock = () => {
     const controlBlock = document.createElement('div');
     const groupBlock = document.createElement('div');
-    const saveBtn = utils.justBtn('Сохранить');
-    const loadBtn = utils.justBtn('Загрузить');
+    const saveBtn = utils.justBtn('Сохранить в буфер');
+    const loadBtn = utils.justBtn('Загрузить из буфера');
     const cleanBtn = utils.justBtn('Очистить все');
     const resultBtn = utils.justBtn('Результат');
 

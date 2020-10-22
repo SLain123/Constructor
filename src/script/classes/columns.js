@@ -7,7 +7,7 @@ class ColumnsBlock extends Block {
         content = ['Текст первой колонки', 'Текст второй колонки', 'Текст третьей колонки'],
         tag = 'span',
         fontSize = '16',
-        color = 'black',
+        color = '#333',
         fontFamily = 'sans-serif',
         fontStyle = 'normal',
         fontWeight = 'normal',

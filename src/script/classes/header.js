@@ -6,7 +6,7 @@ class HeaderBlock extends Block {
         id = 'error-id',
         content = 'Здесь должен быть какой то заголовок',
         tag = 'h1',
-        color = 'black',
+        color = '#333',
         fontFamily = 'sans-serif',
         fontStyle = 'normal',
         fontWeight = 'normal',
