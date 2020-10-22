@@ -68,9 +68,14 @@ const onSubmitForm = e => {
     const formLables = e.target.querySelectorAll('label');
 
     let mainData = {};
+    let checkText;
 
     for (let lable of formLables) {
         const dataBlock = lable.children[0];
+
+        if(dataBlock.name === 'content') {                 // Проверка контента на запрещенные символы
+            checkText = checkTextContent(dataBlock.value);
+        }
 
         if (dataBlock.value) { //Проверка на наличие контента
 
@@ -89,7 +94,17 @@ const onSubmitForm = e => {
     }
 
     e.target.reset();
-    management.addNewData(dataClass, mainData);
+    if(checkText === true) {
+        management.addNewData(dataClass, mainData);
+    }
+}
+
+const checkTextContent = text => {
+    if(text.search(/[<|>]/) !== -1) {
+        alert('Текстовое поле не поддерживает символы < и >, не используй их!');
+        return false;
+    }
+    return true;
 }
 
 export {
