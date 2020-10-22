@@ -23,7 +23,7 @@ class ColumnsBlock extends Block {
     }
 
     toHTML() {
-        const resultArr = this.content.map(text => utils.col(`<${this.tag} class="columns-${this.id}" style="font-size: ${this.checkNumber(this.fontSize, 8, 80, 'размер текста')}px; color: ${this.color}; font-family: ${this.fontFamily}; font-style: ${this.fontStyle}; font-weight: ${this.fontWeight}; ${this.styles}">${text}</${this.tag}>`)).join(' ');
+        const resultArr = this.content.map(text => utils.col(`<${this.tag} class="columns-${this.id}" style="font-size: ${this.checkNumber(this.fontSize, 8, 80)}px; color: ${this.color}; font-family: ${this.fontFamily}; font-style: ${this.fontStyle}; font-weight: ${this.fontWeight}; ${this.styles}">${text}</${this.tag}>`)).join(' ');
         return utils.row(`${resultArr}`, this.id);
     }
 }

@@ -37,7 +37,7 @@ class Link extends Block {
 
     toHTML() {
         return utils.row(
-            utils.col(`<${this.tag} href="${this.link}" ${this.isBlank()} class="link-${this.id}" style="font-size: ${this.checkNumber(this.fontSize, 8, 80, 'размер текста')}px; color: ${this.color}; font-family: ${this.fontFamily}; font-style: ${this.fontStyle}; font-weight: ${this.fontWeight}; text-align: ${this.textAlign}; display: block; ${this.styles}">${this.content}</${this.tag}>`),
+            utils.col(`<${this.tag} href="${this.link}" ${this.isBlank()} class="link-${this.id}" style="font-size: ${this.checkNumber(this.fontSize, 8, 80)}px; color: ${this.color}; font-family: ${this.fontFamily}; font-style: ${this.fontStyle}; font-weight: ${this.fontWeight}; text-align: ${this.textAlign}; display: block; ${this.styles}">${this.content}</${this.tag}>`),
             this.id);
     }
 }
