@@ -24,11 +24,11 @@ const form = content => {
     return form;
 }
 
-const input = (name, placeholder, label, type = 'text') => {
+const input = (name, placeholder, label, type = 'text', value = '') => {
     if(type === 'file') {
         return `<div class="flex-column"><label>${label}<input type="${type}" accept=".png, .jpg, .jpeg" name="${name}"></label></div>`;
     }
-    return `<div class="flex-column"><label>${label}<input type="${type}" placeholder="${placeholder}" name="${name}"></label></div>`;
+    return `<div class="flex-column"><label>${label}<input type="${type}" placeholder="${placeholder}" value="${value}" name="${name}"></label></div>`;
 }
 
 const textarea = (name, placeholder, label) => {

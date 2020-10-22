@@ -134,6 +134,13 @@
     font-size: 13px;
 }
 
+.form input[type="color"] {
+    width: 40px;
+    height: 20px;
+    margin: 5px 0 10px 40px;
+    padding: 3px;
+}
+
 .form select {
     cursor: pointer;
     background: white;

@@ -8,7 +8,7 @@ const createForm = tagName => {
     if (tagName === 'Заголовок') {
         form = utils.form(` ${utils.input('content', 'Введите текст заголовка', 'Текст заголовка:')}
                             ${utils.select('tag', ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'], 'Выберите тип (величину) заголовка')}
-                            ${utils.input('color', 'Введите цвет текста', 'Цвет текста:')}
+                            ${utils.input('color', 'Введите цвет текста', 'Цвет текста:', 'color', '#333333')}
                             ${utils.select('fontFamily', ['sans-serif', 'serif', 'Georgia', 'system-ui'], 'Выберите тип шрифта')}
                             ${utils.select('fontStyle', ['normal', 'italic'], 'Выберите стиль шрифта')}
                             ${utils.select('fontWeight', ['normal', 'bold', 'lighter'], 'Выберите толщину шрифта')}
@@ -17,34 +17,34 @@ const createForm = tagName => {
                             ${utils.submitBtn()}`);
     } else if (tagName === 'Обычный текст') {
         form = utils.form(` ${utils.input('content', 'Введите текст абзаца', 'Текст абзаца:')}
-                            ${utils.input('fontSize', 'Введите размер текста от 1 до 100px (только цифры)', 'Размер текста:', 'number')}
-                            ${utils.input('color', 'Введите цвет текста', 'Цвет текста:')}
+                            ${utils.input('fontSize', 'Введите размер от 8 до 80px (только цифры)', 'Размер текста:', 'number')}
+                            ${utils.input('color', 'Введите цвет текста', 'Цвет текста:', 'color', '#333333')}
                             ${utils.select('fontFamily', ['sans-serif', 'serif', 'Georgia', 'system-ui'], 'Выберите тип шрифта')}
                             ${utils.select('fontStyle', ['normal', 'italic'], 'Выберите стиль шрифта')}
                             ${utils.select('fontWeight', ['normal', 'bold', 'lighter'], 'Выберите толщину шрифта')}
                             ${utils.select('textAlign', ['left', 'center', 'right'], 'Выберите положение текста')}
-                            ${utils.textarea('styles', 'Введите желаемые стили для текста (опционально), формат css', 'Дополнительные стили:')}
+                            ${utils.textarea('styles', 'Введите желаемые стили для текста, формат css', 'Дополнительные стили:')}
                             ${utils.submitBtn()}`);
     } else if (tagName === 'Гиперссылка') {
         form = utils.form(` ${utils.input('content', 'Введите текст для отображения', 'Текст ссылки:')}
                             ${utils.input('link', 'Введите ссылку http(s)://...', 'Тело ссылки:')}
                             ${utils.select('blank', ['Да', 'Нет'], 'В отдельном окне?')}
-                            ${utils.input('fontSize', 'Введите размер текста от 1 до 100px (только цифры)', 'Размер текста:', 'number')}
-                            ${utils.input('color', 'Введите цвет текста', 'Цвет текста:')}
+                            ${utils.input('fontSize', 'Введите размер от 8 до 80px (только цифры)', 'Размер текста:', 'number')}
+                            ${utils.input('color', 'Введите цвет текста', 'Цвет текста:', 'color', '#0d6efd')}
                             ${utils.select('fontFamily', ['sans-serif', 'serif', 'Georgia', 'system-ui'], 'Тип шрифта')}
                             ${utils.select('fontStyle', ['normal', 'italic'], 'Стиль шрифта')}
                             ${utils.select('fontWeight', ['normal', 'bold', 'lighter'], 'Толщина шрифта')}
                             ${utils.select('textAlign', ['left', 'center', 'right'], 'Положение ссылки')}
-                            ${utils.textarea('styles', 'Введите желаемые стили для текста (опционально), формат css', 'Дополнительные стили:')}
+                            ${utils.textarea('styles', 'Введите желаемые стили для гиперссылки, формат css', 'Дополнительные стили:')}
                             ${utils.submitBtn()}`);
     } else if (tagName === 'Колонки с текстом') {
         form = utils.form(` ${utils.textarea('content', 'Введите текст абзацев для каждого столбца через ; с пробелом:     `; `', 'Текст колонок:')}
-                            ${utils.input('fontSize', 'Введите размер текста от 1 до 100px (только цифры)', 'Размер текста:', 'number')}
-                            ${utils.input('color', 'Введите цвет текста', 'Цвет текста:')}
+                            ${utils.input('fontSize', 'Введите размер от 8 до 80px (только цифры)', 'Размер текста:', 'number')}
+                            ${utils.input('color', 'Введите цвет текста', 'Цвет текста:', 'color', '#333333')}
                             ${utils.select('fontFamily', ['sans-serif', 'serif', 'Georgia', 'system-ui'], 'Выберите тип шрифта')}
                             ${utils.select('fontStyle', ['normal', 'italic'], 'Выберите стиль шрифта')}
                             ${utils.select('fontWeight', ['normal', 'bold', 'lighter'], 'Выберите толщину шрифта')}                         
-                            ${utils.textarea('styles', 'Введите желаемые стили для заголовка', 'Дополнительные стили:')}
+                            ${utils.textarea('styles', 'Введите желаемые стили для текста, формат css', 'Дополнительные стили:')}
                             ${utils.submitBtn()}`);
     } else if (tagName === 'Изображение') {
         form = utils.form(` ${utils.input('content', 'Путь будет добавлен в результатах', 'Путь до картинки:')} 
@@ -54,7 +54,7 @@ const createForm = tagName => {
                             ${utils.input('height', 'Введите высоту картинки', 'Длина:', 'number')}
                             ${utils.input('radius', 'Введите значение для скругления углов картинки (только цифры)', 'Величина скругления углов:', 'number')}
                             ${utils.select('justify', ['left', 'center', 'right'], 'Выберите положение картинки')}                            
-                            ${utils.textarea('styles', 'Введите желаемые стили для картинки', 'Дополнительные стили:')}
+                            ${utils.textarea('styles', 'Введите желаемые стили для картинки, формат css', 'Дополнительные стили:')}
                             ${utils.submitBtn()}`);
     }
     return form;

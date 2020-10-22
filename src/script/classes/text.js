@@ -26,7 +26,7 @@ class TextBlock extends Block {
 
     toHTML() {
         return utils.row(
-            utils.col(`<${this.tag} class="text-${this.id}" style="font-size: ${this.fontSize}px; color: ${this.color}; font-family: ${this.fontFamily}; font-style: ${this.fontStyle}; font-weight: ${this.fontWeight}; text-align: ${this.textAlign}; ${this.styles}">${this.content}</${this.tag}>`),
+            utils.col(`<${this.tag} class="text-${this.id}" style="font-size: ${this.checkNumber(this.fontSize, 8, 80, 'размер текста')}px; color: ${this.color}; font-family: ${this.fontFamily}; font-style: ${this.fontStyle}; font-weight: ${this.fontWeight}; text-align: ${this.textAlign}; ${this.styles}">${this.content}</${this.tag}>`),
             this.id);
     }
 }
