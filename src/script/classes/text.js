@@ -12,6 +12,8 @@ class TextBlock extends Block {
         fontStyle = 'normal',
         fontWeight = 'normal',
         textAlign = 'left',
+        margin = 0,
+        padding = 0,
         styles = ''
     }) {
         super(id, content, tag, styles);
@@ -22,11 +24,13 @@ class TextBlock extends Block {
         this.fontWeight = fontWeight;
         this.textAlign = textAlign;
         this.fontSize = fontSize;
+        this.margin = margin;
+        this.padding = padding;
     }
 
     toHTML() {
         return utils.row(
-            utils.col(`<${this.tag} class="text-${this.id}" style="font-size: ${this.checkNumber(this.fontSize, 8, 80)}px; color: ${this.color}; font-family: ${this.fontFamily}; font-style: ${this.fontStyle}; font-weight: ${this.fontWeight}; text-align: ${this.textAlign}; ${this.styles}">${this.content}</${this.tag}>`),
+            utils.col(`<${this.tag} class="text-${this.id}" style="font-size: ${this.checkNumber(this.fontSize, 8, 80)}px; color: ${this.color}; font-family: ${this.fontFamily}; font-style: ${this.fontStyle}; font-weight: ${this.fontWeight}; text-align: ${this.textAlign}; margin: ${this.checkNumber(this.margin, 0, (this.getMaxWidth() / 4))}px; padding: ${this.checkNumber(this.padding, 0, (this.getMaxWidth() / 4))}px; ${this.styles}">${this.content}</${this.tag}>`),
             this.id);
     }
 }

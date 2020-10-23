@@ -11,6 +11,8 @@ class ColumnsBlock extends Block {
         fontFamily = 'sans-serif',
         fontStyle = 'normal',
         fontWeight = 'normal',
+        margin = 0,
+        padding = 0,
         styles = ''
     }) {
         super(id, content, tag, styles);
@@ -20,10 +22,12 @@ class ColumnsBlock extends Block {
         this.fontStyle = fontStyle;
         this.fontWeight = fontWeight;
         this.fontSize = fontSize;
+        this.margin = margin;
+        this.padding = padding;
     }
 
     toHTML() {
-        const resultArr = this.content.map(text => utils.col(`<${this.tag} class="columns-${this.id}" style="font-size: ${this.checkNumber(this.fontSize, 8, 80)}px; color: ${this.color}; font-family: ${this.fontFamily}; font-style: ${this.fontStyle}; font-weight: ${this.fontWeight}; ${this.styles}">${text}</${this.tag}>`)).join(' ');
+        const resultArr = this.content.map(text => utils.col(`<${this.tag} class="columns-${this.id}" style="font-size: ${this.checkNumber(this.fontSize, 8, 80)}px; color: ${this.color}; font-family: ${this.fontFamily}; font-style: ${this.fontStyle}; font-weight: ${this.fontWeight}; margin: ${this.checkNumber(this.margin, 0, (this.getMaxWidth() / 10))}px; padding: ${this.checkNumber(this.padding, 0, (this.getMaxWidth() / 10))}px; ${this.styles}">${text}</${this.tag}>`)).join(' ');
         return utils.row(`${resultArr}`, this.id);
     }
 }

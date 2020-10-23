@@ -14,6 +14,8 @@ class Link extends Block {
         fontWeight = 'normal',
         textAlign = 'left',
         blank = 'Да',
+        margin = 0,
+        padding = 0,
         styles = ''
     }) {
         super(id, content, tag, styles);
@@ -26,6 +28,8 @@ class Link extends Block {
         this.textAlign = textAlign;
         this.fontSize = fontSize;
         this.blank = blank;
+        this.margin = margin;
+        this.padding = padding;
     }
 
     isBlank() {
@@ -37,7 +41,7 @@ class Link extends Block {
 
     toHTML() {
         return utils.row(
-            utils.col(`<${this.tag} href="${this.link}" ${this.isBlank()} class="link-${this.id}" style="font-size: ${this.checkNumber(this.fontSize, 8, 80)}px; color: ${this.color}; font-family: ${this.fontFamily}; font-style: ${this.fontStyle}; font-weight: ${this.fontWeight}; text-align: ${this.textAlign}; display: block; ${this.styles}">${this.content}</${this.tag}>`),
+            utils.col(`<${this.tag} href="${this.link}" ${this.isBlank()} class="link-${this.id}" style="font-size: ${this.checkNumber(this.fontSize, 8, 80)}px; color: ${this.color}; font-family: ${this.fontFamily}; font-style: ${this.fontStyle}; font-weight: ${this.fontWeight}; text-align: ${this.textAlign}; display: block; margin: ${this.checkNumber(this.margin, 0, (this.getMaxWidth() / 4))}px; padding: ${this.checkNumber(this.padding, 0, (this.getMaxWidth() / 4))}px; ${this.styles}">${this.content}</${this.tag}>`),
             this.id);
     }
 }

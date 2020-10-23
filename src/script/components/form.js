@@ -13,8 +13,8 @@ const createForm = tagName => {
                             ${utils.select('fontStyle', ['normal', 'italic'], 'Выберите стиль шрифта')}
                             ${utils.select('fontWeight', ['normal', 'bold', 'lighter'], 'Выберите толщину шрифта')}
                             ${utils.select('textAlign', ['left', 'center', 'right'], 'Выберите положение заголовка')}
-                            ${utils.input('margin', 'Отступы от 0px до 50% (в px) от ширины монитора', 'Внешние отступы:')}
-                            ${utils.input('padding', 'Отступы от 0px до 50% (в px) от ширины монитора', 'Внутренние отступы:')}
+                            ${utils.input('margin', 'Отступы от 0px до 25% (в px) от ширины монитора', 'Внешние отступы:', 'number')}
+                            ${utils.input('padding', 'Отступы от 0px до 25% (в px) от ширины монитора', 'Внутренние отступы:', 'number')}
                             ${utils.textarea('styles', 'Введите желаемые стили для заголовка, формат css','Дополнительные стили:')}
                             ${utils.submitBtn()}`);
     } else if (tagName === 'Обычный текст') {
@@ -25,8 +25,8 @@ const createForm = tagName => {
                             ${utils.select('fontStyle', ['normal', 'italic'], 'Выберите стиль шрифта')}
                             ${utils.select('fontWeight', ['normal', 'bold', 'lighter'], 'Выберите толщину шрифта')}
                             ${utils.select('textAlign', ['left', 'center', 'right'], 'Выберите положение текста')}
-                            ${utils.input('margin', 'Отступы от 0px до 50% (в px) от ширины монитора', 'Внешние отступы:')}
-                            ${utils.input('padding', 'Отступы от 0px до 50% (в px) от ширины монитора', 'Внутренние отступы:')}
+                            ${utils.input('margin', 'Отступы от 0px до 25% (в px) от ширины монитора', 'Внешние отступы:', 'number')}
+                            ${utils.input('padding', 'Отступы от 0px до 25% (в px) от ширины монитора', 'Внутренние отступы:', 'number')}
                             ${utils.textarea('styles', 'Введите желаемые стили для текста, формат css', 'Дополнительные стили:')}
                             ${utils.submitBtn()}`);
     } else if (tagName === 'Гиперссылка') {
@@ -39,8 +39,8 @@ const createForm = tagName => {
                             ${utils.select('fontStyle', ['normal', 'italic'], 'Стиль шрифта')}
                             ${utils.select('fontWeight', ['normal', 'bold', 'lighter'], 'Толщина шрифта')}
                             ${utils.select('textAlign', ['left', 'center', 'right'], 'Положение ссылки')}
-                            ${utils.input('margin', 'Отступы от 0px до 50% (в px) от ширины монитора', 'Внешние отступы:')}
-                            ${utils.input('padding', 'Отступы от 0px до 50% (в px) от ширины монитора', 'Внутренние отступы:')}
+                            ${utils.input('margin', 'Отступы от 0px до 25% (в px) от ширины монитора', 'Внешние отступы:', 'number')}
+                            ${utils.input('padding', 'Отступы от 0px до 25% (в px) от ширины монитора', 'Внутренние отступы:', 'number')}
                             ${utils.textarea('styles', 'Введите желаемые стили для гиперссылки, формат css', 'Дополнительные стили:')}
                             ${utils.submitBtn()}`);
     } else if (tagName === 'Колонки с текстом') {
@@ -50,8 +50,8 @@ const createForm = tagName => {
                             ${utils.select('fontFamily', ['sans-serif', 'serif', 'Georgia', 'system-ui'], 'Выберите тип шрифта')}
                             ${utils.select('fontStyle', ['normal', 'italic'], 'Выберите стиль шрифта')}
                             ${utils.select('fontWeight', ['normal', 'bold', 'lighter'], 'Выберите толщину шрифта')}
-                            ${utils.input('margin', 'Отступы от 0px до 50% (в px) от ширины монитора', 'Внешние отступы:')}
-                            ${utils.input('padding', 'Отступы от 0px до 50% (в px) от ширины монитора', 'Внутренние отступы:')}
+                            ${utils.input('margin', 'Отступы от 0px до 10% (в px) от ширины монитора', 'Внешние отступы:', 'number')}
+                            ${utils.input('padding', 'Отступы от 0px до 10% (в px) от ширины монитора', 'Внутренние отступы:', 'number')}
                             ${utils.textarea('styles', 'Введите желаемые стили для текста, формат css', 'Дополнительные стили:')}
                             ${utils.submitBtn()}`);
     } else if (tagName === 'Изображение') {
@@ -63,8 +63,7 @@ const createForm = tagName => {
                             ${utils.input('height', 'Значение от 10px(%) до 100% от высоты монитора', 'Высота:', 'number')}
                             ${utils.input('radius', 'Значение от 0px(%) до 100px(%)', 'Величина скругления углов:', 'number')}
                             ${utils.select('justify', ['left', 'center', 'right'], 'Положение картинки')}
-                            ${utils.input('margin', 'Отступы от 0px до 50% (в px) от ширины монитора', 'Внешние отступы:')}
-                            ${utils.input('padding', 'Отступы от 0px до 50% (в px) от ширины монитора', 'Внутренние отступы:')}
+                            ${utils.input('margin', 'Отступы от 0px до 25% (в px) от ширины монитора', 'Внешние отступы:', 'number')}
                             ${utils.textarea('styles', 'Введите желаемые стили для картинки, формат css', 'Дополнительные стили:')}
                             ${utils.submitBtn()}`);
     }

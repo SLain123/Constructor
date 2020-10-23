@@ -20,6 +20,14 @@ class Block {
         } 
         return number;
     }
+
+    getMaxWidth() {
+        return document.documentElement.clientWidth;
+    }
+
+    getMaxHeigth() {
+        return document.documentElement.clientHeight;
+    }
 }
 
 
