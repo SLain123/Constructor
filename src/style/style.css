@@ -153,7 +153,7 @@
 
 .form textarea {
     margin: 0 0 10px 0;
-    min-height: 80px;
+    min-height: 60px;
     border-radius: 5px;
     border: none;
     width: 100%;
@@ -189,7 +189,7 @@
 }
 
 .control-block {
-    margin: 25px 0 0 0;
+    margin: 20px 0 0 0;
     width: 90%;
 }
 
@@ -277,6 +277,7 @@
     width: 78%;
     margin-left: 15px;
     transition: 1s ease;
+    overflow-x: hidden;
 }
 
 .content_full-size {

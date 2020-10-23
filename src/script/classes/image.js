@@ -9,8 +9,8 @@ class ImageBlock extends Block {
         content = 'Здесь должен быть путь до картинки',
         tag = 'img',
         alt = 'pic',
-        width = '500',
-        height = '300',
+        width = 'auto',
+        height = 'auto',
         radius = '0',
         justify,
         styles = '',
@@ -25,20 +25,34 @@ class ImageBlock extends Block {
         this.radius = radius;
         this.justify = justify;
         this.adaptive = adaptive;
+        this._w = '';
+        this._h = '';
     }
 
     toHTML() {
         if(this.isAdaptive()) {
-            return utils.row(utils.col(`<img src="${this.file}" alt="${this.alt}" class="pic-${this.id}" data-path="${this.content}" style="width: ${this.checkNumber(this.width, 10, 100)}%; height: ${this.checkNumber(this.height, 10, 100)}vh; border-radius: ${this.checkNumber(this.radius, 0, 100)}%; ${this.styles}">`, this.justify), this.id);
+            return utils.row(utils.col(`<img src="${this.file}" alt="${this.alt}" class="pic-${this.id}" data-path="${this.content}" style="width: ${this.checkNumber(this.width, 10, 100)}${this._w}; height: ${this.checkNumber(this.height, 10, 100)}${this._h}; border-radius: ${this.checkNumber(this.radius, 0, 100)}%; ${this.styles}">`, this.justify), this.id);
         }
         else {
-            return utils.row(utils.col(`<img src="${this.file}" alt="${this.alt}" class="pic-${this.id}" data-path="${this.content}" style="width: ${this.checkNumber(this.width, 10, this.getMaxWidth())}px; height: ${this.checkNumber(this.height, 10, this.getMaxHeigth())}px; border-radius: ${this.checkNumber(this.radius, 0, 100)}px; ${this.styles}">`, this.justify), this.id);}
-        
+            return utils.row(utils.col(`<img src="${this.file}" alt="${this.alt}" class="pic-${this.id}" data-path="${this.content}" style="width: ${this.checkNumber(this.width, 10, this.getMaxWidth())}${this._w}; height: ${this.checkNumber(this.height, 10, this.getMaxHeigth())}${this._h}; border-radius: ${this.checkNumber(this.radius, 0, 100)}px; ${this.styles}">`, this.justify), this.id);
+        }
     }
 
     isAdaptive() {
         if(this.adaptive === 'Хочу значение в %') {
+            if(this.width !== 'auto') {
+                this._w = '%'
+            }
+            if(this.height !== 'auto') {
+                this._h = 'vh'
+            }
             return true;
+        }
+        if(this.width !== 'auto') {
+            this._w = 'px';
+        }
+        if(this.height !== 'auto') {
+            this._h = 'px';
         }
         return false;
     }
