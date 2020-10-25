@@ -3,7 +3,7 @@ import {
 } from '../components/form';
 
 const row = (content, id) => {
-    return `<div class="row" id="${id}">${content}${removeBtn()}</div>`
+    return `<div class="row" id="${id}">${content}${_managementBlock()}</div>`
 }
 
 const col = (content, position) => {
@@ -52,8 +52,8 @@ const select = (name, options, label) => {
     return `<div class="flex-column"><label>${label}<select name="${name}">${opts}</select></label></div>`;
 }
 
-const removeBtn = () => {
-    return `<button class="delete-btn">&#215;</button>`
+const _managementBlock = () => {
+    return `<div class="management-block"><button class="fa fa-pencil edit-btn management-btn" aria-hidden="true"></button></button><button class="fa fa-trash delete-btn management-btn" aria-hidden="true"></button></div>`
 }
 
 const utils = {
@@ -64,7 +64,6 @@ const utils = {
     textarea,
     submitBtn,
     select,
-    removeBtn,
     justBtn
 }
 

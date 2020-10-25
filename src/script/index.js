@@ -1,4 +1,5 @@
 import ManagementCenter from './classes/management';
+import 'font-awesome/css/font-awesome.min.css';
 import {} from './components/arrow-panel';
 
 const $content = document.querySelector('.content');

@@ -286,28 +286,83 @@
     width: 98%;
 }
 
-.delete-btn {
+.management-block {
+    width: 50px;
+    display: flex;
     position: absolute;
-    left: 96%;
+    right: 15px;
     top: 0;
-    width: 20px;
-    height: 20px;
-    padding: 0;
-    font-weight: 700;
-    border: none;
-    font-size: 20px;
-    border-radius: 5px;
-    box-shadow: 1px 1px 3px black;
-    line-height: 0;
-    transition: .2s ease;
-    opacity: .7;
+    transition: all ease 1s;
 }
 
-.delete-btn:hover {
+.management-btn {
+    margin: 3px 0;
+    width: 30px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    border-radius: 5px;
+    opacity: .6;
+    background: none;
+    transform: scale(1.2);
+}
+
+.edit-wrapper {
+    position: absolute;
+    right: 28px;
+    display: flex;
+    width: 700px;
+    animation: input-visible 1s ease alternate;
+}
+
+@keyframes input-visible {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.edit-wrapper *:focus {
+    outline: none;
+    box-shadow: 3px 3px 7px rgb(61, 60, 60), -3px 3px 7px  rgb(61, 60, 60), 3px -3px 7px  rgb(61, 60, 60), -3px -3px 7px  rgb(61, 60, 60);
+}
+
+.edit-string {
+    width: 100%;
+    background: white;
+    border-radius: 5px;
+}
+
+.edit-enter-btn {
+    opacity: 1;
+    position: relative;
+    right: 30px;
+    top: 10px;
+    transform: scale(1.5);
+    background: white;
+    border: none;
+    padding: 0;
+    max-height: 15px;
+    color: green;
+}
+
+.edit-btn {
+    color: green;
+    margin-right: 5px;
+}
+
+.delete-btn {
+    color: red;
+}
+
+.management-block *:hover {
     opacity: 1;
 }
 
-.delete-btn:focus {
+.management-block *:focus {
     outline: none;
     box-shadow: 3px 3px 7px rgb(61, 60, 60), -3px 3px 7px  rgb(61, 60, 60), 3px -3px 7px  rgb(61, 60, 60), -3px -3px 7px  rgb(61, 60, 60);
 }
@@ -315,14 +370,7 @@
 .row {
     position: relative;
     overflow: hidden;
-}
-
-.text{
-    min-height: 30px;
-}
-
-.coluns {
-    min-height: 30px;
+    min-height: 40px;
 }
 
 .left {
@@ -500,5 +548,20 @@
         flex-flow: column;
         justify-content: space-between;
         align-items: center
+    }
+
+    .edit-wrapper {
+        width: 450px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .edit-wrapper {
+        width: 250px;
+    }
+
+    .edit-string {
+        min-height: 60px;
     }
 }

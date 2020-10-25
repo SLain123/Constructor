@@ -12,7 +12,7 @@ const results = (contentBlock, targetHTMLBlock, targetCSSBlock) => {
 
             for (let elem of allChildBlocks) { // перебор всех НЕ столбцов
 
-                if (!elem.classList.contains('delete-btn')) { // проверка на контент, кроме кнопки удалить
+                if (!elem.classList.contains('management-block')) {// проверка контента, кроме кнопок управления
                     getStyles(elem.children[0], resultCSS);
                     resultHTML.push(handlerHTMLBlocks(elem));
                 }
@@ -47,7 +47,7 @@ const handlerHTMLColumns = elemsArr => {
     let group = '';
     for (let elem of elemsArr) { // перебор всех столбцов
 
-        if (!elem.classList.contains('delete-btn')) { // кроме кнопки удалить
+        if (!elem.classList.contains('management-block')) { // кроме кнопок управления
             const clone = elem.cloneNode(true);
 
             clone.children[0].removeAttribute('style');

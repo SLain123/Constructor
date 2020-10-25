@@ -17,6 +17,7 @@
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "in": "^0.18.2"
   }
 }
