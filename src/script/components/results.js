@@ -39,7 +39,7 @@ const handlerHTMLBlocks = elem => {
     }
 
     childElement.removeAttribute('style');
-    return `<div class="row">\n${space}<div class="col">\n${space}${space}${clone.innerHTML}\n${space}</div>\n</div>`;
+    return `<div class="row">\n${space}<div class="${clone.classList.value}">\n${space}${space}${clone.innerHTML}\n${space}</div>\n</div>`;
 }
 
 const handlerHTMLColumns = elemsArr => {

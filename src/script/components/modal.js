@@ -6,6 +6,7 @@ const $cssBtn = document.querySelector('#css');
 const $copyBtn = document.querySelector('#copy');
 const $htmlBlock = document.querySelector('.results__html');
 const $cssBlock = document.querySelector('.results__css');
+const $downloadBtn = document.querySelector('#download');
 
 const displayModalResults = () => {
     $body.style.paddingRight = `${calcPadding()}px`;
@@ -42,15 +43,7 @@ const makeActive = active => {
     }
 }
 
-$modalOverlay.addEventListener('mousedown', e => {
-    if(e.target === $modalOverlay) {
-        closeModal();
-    }
-});
-$closeModalBtn.addEventListener('click', () => closeModal());
-$htmlBtn.addEventListener('click', () => makeActive('html'));
-$cssBtn.addEventListener('click', () => makeActive('css'));
-$copyBtn.addEventListener('click', () => {
+const copyCode = () => {
     let copyText;
 
     if($htmlBlock.classList.contains('results_active-block')) {
@@ -84,7 +77,43 @@ $copyBtn.addEventListener('click', () => {
             $copyBtn.classList.remove('results__btn-copy-fail')}, 
             2000);
     }
+}
+
+const cleanSpaces = data => {
+    const rexSpace = /(&nbsp;)+/g;
+    const rexBR = /(<br>)+/g;
+
+    return data.replace(rexSpace, '').replace(rexBR, '');
+}
+
+const downloadCode = () => {
+    const htmlText = `<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<link rel="stylesheet" href="./style.css">\n<title>Сделано через конструктор</title>\n</head>\n<body>\n${$htmlBlock.innerText}\n</body>\n</html>`;
+    const htmlLink = document.createElement('a');
+    const htmlFile = new Blob([htmlText], {type: 'text/plain'});
+
+    htmlLink.href = URL.createObjectURL(htmlFile);
+    htmlLink.download = 'index.html';
+    htmlLink.click();
+
+    const css = cleanSpaces($cssBlock.innerHTML);
+    const cssLink = document.createElement('a');
+    const cssFile = new Blob([css], {type: 'text/plain'});
+
+    cssLink.href = URL.createObjectURL(cssFile);
+    cssLink.download = 'style.css';
+    cssLink.click();
+}
+
+$modalOverlay.addEventListener('mousedown', e => {
+    if(e.target === $modalOverlay) {
+        closeModal();
+    }
 });
+$closeModalBtn.addEventListener('click', () => closeModal());
+$htmlBtn.addEventListener('click', () => makeActive('html'));
+$cssBtn.addEventListener('click', () => makeActive('css'));
+$copyBtn.addEventListener('click', () => copyCode());
+$downloadBtn.addEventListener('click', () => downloadCode());
 
 export {
     displayModalResults
