@@ -76,9 +76,21 @@ const getData = request => {
     return (request === 'content') ? _dataStorage : _dataPanel;
 }
 
+const editContentInStorage = (editId, editContent, count) => {
+    _dataStorage.forEach(block => {
+        if(block.id === editId && count < 3) {
+            block.content = editContent;
+        } else if (block.id === editId) {
+            const columns = editContent.split('; ');
+            block.content = columns;
+        }
+    })
+}git
+
 export {
     getData,
     addDataToStorage,
     removeDataStorage,
-    cleanAll
+    cleanAll,
+    editContentInStorage
 };

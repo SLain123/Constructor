@@ -17,14 +17,14 @@ const createEditString = parent => {
     inputStr.placeholder = 'Текст для изменения содержимого блока';
     enterBtn.setAttribute('aria-hidden', true);
     enterBtn.addEventListener('click', e => {
-        const id = e.target.parentElement.parentElement.parentElement.id;
+        const id = +e.target.parentElement.parentElement.parentElement.id;
         const value = e.target.previousElementSibling.value;
-        management.editContent(id, value);
+        const countOfChildrenBlock = e.target.parentElement.parentElement.parentElement.children.length;
+        management.editContent(id, value, countOfChildrenBlock);
     });
 
     wrapper.append(inputStr);
     wrapper.append(enterBtn);
-
     parent.prepend(wrapper);
 }
 

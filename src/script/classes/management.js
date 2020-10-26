@@ -2,7 +2,8 @@ import {
     getData,
     addDataToStorage,
     removeDataStorage,
-    cleanAll
+    cleanAll,
+    editContentInStorage
 } from "../components/storage";
 import {
     renderContent,
@@ -105,8 +106,11 @@ class ManagementCenter {
     }
 
 // Изменяет данные в конкретном инстансе в храналище!!!!!!
-    editContent = (id, text) => {
-        console.log(text);
+    editContent = (id, text, count) => {
+        editContentInStorage(id, text, count);
+        this.updateData();
+        removeContent(this.contentBlock);
+        this.initContent();
     }
 
 // При выборе другого блока в панели управления, удаляет форму текущего блока из панели и добавляет форму под новый выбранный блок;
