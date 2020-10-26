@@ -17,7 +17,11 @@
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
+    "file-saver": "^2.0.2",
     "font-awesome": "^4.7.0",
-    "in": "^0.18.2"
+    "in": "^0.18.2",
+    "jip": "0.0.2",
+    "js": "^0.1.0",
+    "jszip": "^3.5.0"
   }
 }

@@ -1,3 +1,6 @@
+import JSZip from 'jszip';
+import FileSaver from 'file-saver';
+
 const $body = document.querySelector('body');
 const $modalOverlay = document.querySelector('.overlay');
 const $closeModalBtn = document.querySelector('.results__close-btn');
@@ -87,21 +90,15 @@ const cleanSpaces = data => {
 }
 
 const downloadCode = () => {
-    const htmlText = `<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<link rel="stylesheet" href="./style.css">\n<title>Сделано через конструктор</title>\n</head>\n<body>\n${$htmlBlock.innerText}\n</body>\n</html>`;
-    const htmlLink = document.createElement('a');
-    const htmlFile = new Blob([htmlText], {type: 'text/plain'});
+    const htmlText = `<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<link rel="stylesheet" href="./style.css">\n<title>Сделано в конструкторе</title>\n</head>\n<body>\n${$htmlBlock.innerText}\n</body>\n</html>`;
+    const cssText = cleanSpaces($cssBlock.innerHTML);
+    const zip = new JSZip();
 
-    htmlLink.href = URL.createObjectURL(htmlFile);
-    htmlLink.download = 'index.html';
-    htmlLink.click();
-
-    const css = cleanSpaces($cssBlock.innerHTML);
-    const cssLink = document.createElement('a');
-    const cssFile = new Blob([css], {type: 'text/plain'});
-
-    cssLink.href = URL.createObjectURL(cssFile);
-    cssLink.download = 'style.css';
-    cssLink.click();
+    zip.file('index.html', htmlText);
+    zip.file('style.css', cssText);
+    zip.generateAsync({type: "blob"}).then(function(content) {
+    FileSaver.saveAs(content, "your-web-site.zip");
+});
 }
 
 $modalOverlay.addEventListener('mousedown', e => {
