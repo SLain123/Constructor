@@ -292,7 +292,17 @@
     position: absolute;
     right: 15px;
     top: 0;
-    transition: all ease 1s;
+    transition: all ease .5s;
+    opacity: 0;
+}
+
+.management-block *:hover {
+    opacity: 1;
+}
+
+.management-block *:focus {
+    outline: none;
+    box-shadow: 3px 3px 7px rgb(61, 60, 60), -3px 3px 7px  rgb(61, 60, 60), 3px -3px 7px  rgb(61, 60, 60), -3px -3px 7px  rgb(61, 60, 60);
 }
 
 .management-btn {
@@ -358,19 +368,14 @@
     color: red;
 }
 
-.management-block *:hover {
-    opacity: 1;
-}
-
-.management-block *:focus {
-    outline: none;
-    box-shadow: 3px 3px 7px rgb(61, 60, 60), -3px 3px 7px  rgb(61, 60, 60), 3px -3px 7px  rgb(61, 60, 60), -3px -3px 7px  rgb(61, 60, 60);
-}
-
 .row {
     position: relative;
     overflow: hidden;
     min-height: 40px;
+}
+
+.row:hover .management-block {
+    opacity: 1;
 }
 
 .left {

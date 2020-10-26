@@ -85,7 +85,7 @@ const editContentInStorage = (editId, editContent, count) => {
             block.content = columns;
         }
     })
-}git
+}
 
 export {
     getData,
