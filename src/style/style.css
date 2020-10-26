@@ -433,17 +433,16 @@
 }
 
 .results__btn-control {
-    flex-basis: 22%;
+    flex-basis: 18%;
     height: 40px;
     border: none;
     border-radius: 5px;
     box-shadow: 3px 3px 5px black;
     font-size: 18px;
     font-weight: 700;
-    letter-spacing: 1.3px;
+    letter-spacing: 1.1px;
     transition: .3s ease;
-    min-width: 220px;
-    transition: .3s ease;
+    min-width: 180px;
 }
 
 .results__btn-control:active {
@@ -548,10 +547,14 @@
     }
 
     .results__control {
-        height: 150px;
+        height: 170px;
         flex-flow: column;
         justify-content: space-between;
-        align-items: center
+        align-items: center;
+    }
+
+    .results__btn-control {
+        margin-bottom: 8px;
     }
 
     .edit-wrapper {
